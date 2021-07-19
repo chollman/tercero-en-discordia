@@ -1,0 +1,25 @@
+@import 'global-variables';
+
+html,
+body {
+    color: $text-color;
+
+    .ui.header {
+        color: $text-color;
+    }
+}
+
+.#{$css-namespace} {
+    @import 'spacing';
+    .ui.segment {
+        color: $text-color;
+    }
+
+    .ui.hidden.image,
+    .ui.hidden.images {
+        display: none !important;
+    }
+    .pushable > .pusher {
+        padding-bottom: 20px;
+    }
+}

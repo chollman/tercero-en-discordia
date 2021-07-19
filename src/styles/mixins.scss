@@ -1,0 +1,26 @@
+//Cross browser CSS3 mixins
+
+@mixin content-box() {
+    background-color: #212b37 !important;
+    @include border-radius(8px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    @include box-shadow(0px, 10px, 13px, -7px, #000000);
+}
+
+@mixin box-shadow($left, $top, $spread, $blur, $color) {
+    box-shadow: $left $top $spread $blur $color !important;
+    -webkit-box-shadow: $left $top $spread $blur $color !important;
+    -moz-box-shadow: $left $top $spread $blur $color !important;
+}
+
+@mixin transition($property, $duration, $easing: linear) {
+    transition: $property $duration $easing;
+    -webkit-transition: $property $duration $easing;
+    -moz-transition: $property $duration $easing;
+}
+
+@mixin border-radius($radius) {
+    border-radius: $radius;
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+}
