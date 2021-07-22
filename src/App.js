@@ -2,7 +2,7 @@ import React from "react";
 import { Router } from "react-router-dom";
 import history from "./history";
 
-import "semantic-ui-css/semantic.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/global.scss";
 
 import Routes from "./routes";

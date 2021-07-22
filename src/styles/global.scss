@@ -11,15 +11,6 @@ body {
 
 .#{$css-namespace} {
     @import 'spacing';
-    .ui.segment {
-        color: $text-color;
-    }
 
-    .ui.hidden.image,
-    .ui.hidden.images {
-        display: none !important;
-    }
-    .pushable > .pusher {
-        padding-bottom: 20px;
-    }
+
 }
