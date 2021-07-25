@@ -10,7 +10,7 @@ import Routes from "./routes";
 const App = () => {
     return (
         <Router history={history}>
-            <div className="bgm">
+            <div className="ted">
                 <Routes location={history.location} />
             </div>
         </Router>

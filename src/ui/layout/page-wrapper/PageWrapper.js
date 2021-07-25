@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Navbar from "./Navbar";
+import Navbar from "../navbar/Navbar";
 
 const PageWrapper = ({ children }) => {
     return (
-        <div className="bgm-page-wrapper">
+        <div className="ted-page-wrapper">
             <Navbar />
             {children}
         </div>

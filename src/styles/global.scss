@@ -1,5 +1,7 @@
 @import 'global-variables';
 
+@import 'fonts/fonts';
+
 html,
 body {
     color: $text-color;
@@ -11,6 +13,4 @@ body {
 
 .#{$css-namespace} {
     @import 'spacing';
-
-
 }

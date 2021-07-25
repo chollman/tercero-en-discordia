@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Route, Switch } from "react-router-dom";
 
-import PageWrapper from "./ui/layout/PageWrapper";
+import PageWrapper from "./ui/layout/page-wrapper/PageWrapper";
 import Admin from "./views/admin";
 import Home from "./views/home";
 
