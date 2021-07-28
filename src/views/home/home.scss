@@ -3,6 +3,40 @@
 .#{$css-namespace} .ted-home {
     margin-top: 80px;
     .ted-my-carousel {
+        .carousel-caption {
+            position: absolute;
+            right: 0;
+            top: 15%;
+            left: 12%;
+            width: 50%;
+            color: #fff;
+            text-align: left;
+            h2 {
+                color: #fff;
+                padding: 50px 0 0;
+                margin: 0;
+                position: relative;
+                font-size: 60px;
+                line-height: normal;
+                z-index: 100;
+            }
+            h3 {
+                margin-top: 0;
+                position: relative;
+                line-height: normal;
+                z-index: 100;
+                margin-bottom: 50px;
+            }
+            a {
+                border: 3px solid #fff;
+                background: transparent;
+                color: #fff;
+                padding: 11px 19px;
+                line-height: 20px;
+                font-size: 17.5px;
+                border-radius: 0;
+            }
+        }
         .carousel-first-slide {
             background-color: #04a7a4;
         }

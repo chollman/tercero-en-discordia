@@ -10,6 +10,8 @@ import {
 import Slide1 from "../../../styles/img/slide1.png";
 import Slide2 from "../../../styles/img/slide2.png";
 import Slide3 from "../../../styles/img/slide3.png";
+import Button from "react-bootstrap/Button";
+import { LinkContainer } from "react-router-bootstrap";
 
 const MyCarousel = () => {
     return (
@@ -23,11 +25,11 @@ const MyCarousel = () => {
                         <MDBContainer>
                             <MDBCarouselElement src={Slide1} alt="..." />
                             <MDBCarouselCaption>
-                                <h5>First slide label</h5>
-                                <p>
-                                    Nulla vitae elit libero, a pharetra augue
-                                    mollis interdum.
-                                </p>
+                                <h2>¿Buscás un Editor?</h2>
+                                <h3 className="gap">Envianos tu trabajo</h3>
+                                <LinkContainer to="/contacto">
+                                    <Button>¡Contactanos!</Button>
+                                </LinkContainer>
                             </MDBCarouselCaption>
                         </MDBContainer>
                     </MDBCarouselItem>
@@ -38,11 +40,13 @@ const MyCarousel = () => {
                         <MDBContainer>
                             <MDBCarouselElement src={Slide2} alt="..." />
                             <MDBCarouselCaption>
-                                <h5>Second slide label</h5>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit.
-                                </p>
+                                <h2>¿Ya tenés tu obra lista?</h2>
+                                <h3 className="gap">
+                                    Solicitanos presupuesto para publicar!
+                                </h3>
+                                <LinkContainer to="/precios">
+                                    <Button>¡Pedir presupuesto ahora!</Button>
+                                </LinkContainer>
                             </MDBCarouselCaption>
                         </MDBContainer>
                     </MDBCarouselItem>
@@ -53,11 +57,13 @@ const MyCarousel = () => {
                         <MDBContainer>
                             <MDBCarouselElement src={Slide3} alt="..." />
                             <MDBCarouselCaption>
-                                <h5>Third slide label</h5>
-                                <p>
-                                    Praesent commodo cursus magna, vel
-                                    scelerisque nisl consectetur.
-                                </p>
+                                <h2>Precios promocionales</h2>
+                                <h3 className="gap">
+                                    Encontrá el precio a tu medida
+                                </h3>
+                                <LinkContainer to="/packs">
+                                    <Button>¡Ver ahora!</Button>
+                                </LinkContainer>
                             </MDBCarouselCaption>
                         </MDBContainer>
                     </MDBCarouselItem>
