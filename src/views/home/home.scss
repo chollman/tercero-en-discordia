@@ -1,6 +1,6 @@
 @import '../../styles/global-variables';
 
-.#{$css-namespace} {
+.#{$css-namespace} .ted-home {
     .ted-my-carousel {
         .carousel-first-slide {
             background-color: #04a7a4;
@@ -30,6 +30,35 @@
             background-color: #5bb75b;
             line-height: 20px;
             float: right;
+        }
+    }
+
+    #services {
+        background: #252525;
+        color: #999;
+        cursor: pointer;
+
+        h1,h2,h3,h4,h5,h6 {
+            color: #fff;
+        }
+
+        .media {
+            margin-top: 50px;
+
+            .media-body, h4 {
+                transition: 300ms ease all;
+            }
+
+            &:hover {
+                .media-body, h4 {
+                    color: #2dcc70;
+                }
+            }
+        }
+
+        .pull-left {
+            margin-right: 10px;
+            float: left;
         }
     }
 }
