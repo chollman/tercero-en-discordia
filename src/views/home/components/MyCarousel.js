@@ -13,7 +13,7 @@ import Slide3 from "../../../styles/img/slide3.png";
 
 const MyCarousel = () => {
     return (
-        <div className="my-carousel">
+        <div className="ted-my-carousel">
             <MDBCarousel showControls showIndicators>
                 <MDBCarouselInner>
                     <MDBCarouselItem
