@@ -1,5 +1,15 @@
 @import '../../styles/global-variables';
 
 .#{$css-namespace} {
-
+    .my-carousel {
+        .carousel-first-slide {
+            background-color: #04a7a4;
+        }
+        .carousel-second-slide {
+            background-color: #666761;
+        }
+        .carousel-third-slide {
+            background-color: #a24e29;
+        }
+    }
 }

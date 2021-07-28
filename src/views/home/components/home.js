@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import MyCarousel from "./MyCarousel";
 
 import "../home.scss";
 
@@ -7,7 +8,11 @@ const Home = () => {
         document.title = "Home | Editorial TED";
     }, []);
 
-    return <div>Home</div>;
+    return (
+        <div>
+            <MyCarousel />
+        </div>
+    );
 };
 
 export default Home;
