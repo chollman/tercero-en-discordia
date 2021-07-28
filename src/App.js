@@ -3,7 +3,7 @@ import { Router } from "react-router-dom";
 import history from "./history";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import "mdb-react-ui-kit/dist/css/mdb.min.css";
+//import "mdb-react-ui-kit/dist/css/mdb.min.css";
 import "./styles/global.scss";
 
 import Routes from "./routes";

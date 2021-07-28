@@ -12,4 +12,24 @@
             background-color: #a24e29;
         }
     }
+
+    .ted-info-button {
+        .btn {
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+            border-radius: 0;
+            border: 0;
+            background-image: none;
+            text-shadow: none;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+            padding: 11px 19px;
+            font-size: 17.5px;
+            color: #ffffff;
+            background-color: #5bb75b;
+            line-height: 20px;
+            float: right;
+        }
+    }
 }

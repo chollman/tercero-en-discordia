@@ -28,6 +28,7 @@
             font-family: "Fjalla One", serif;
             font-size: 14px;
             text-transform: uppercase;
+            color: $nav-color;
 
             &:hover, &.active {
                 color: $primary;
