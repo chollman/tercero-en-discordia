@@ -3,6 +3,7 @@ import MyCarousel from "./MyCarousel";
 import MainInfo from "./sections/main-info";
 import Services from "./sections/services";
 import RecentWorks from "./sections/recent-works";
+import Autores from "./sections/autores";
 
 import "../home.scss";
 
@@ -17,6 +18,7 @@ const Home = () => {
             <MainInfo />
             <Services />
             <RecentWorks />
+            <Autores />
         </div>
     );
 };
