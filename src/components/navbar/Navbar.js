@@ -8,7 +8,7 @@ import "./navbar.scss";
 
 const NavbarGlobal = () => {
     return (
-        <Navbar expand="md" bg="light" variant="light">
+        <Navbar expand="md" bg="light" variant="light" fixed="top">
             <Container>
                 <LinkContainer to="/">
                     <Navbar.Brand>Editorial TED</Navbar.Brand>

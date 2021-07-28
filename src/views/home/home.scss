@@ -1,6 +1,7 @@
 @import '../../styles/global-variables';
 
 .#{$css-namespace} .ted-home {
+    margin-top: 80px;
     .ted-my-carousel {
         .carousel-first-slide {
             background-color: #04a7a4;
