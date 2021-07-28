@@ -5,6 +5,7 @@ import Services from "./sections/services";
 import RecentWorks from "./sections/recent-works";
 import Autores from "./sections/autores";
 import Clients from "./sections/clients";
+import Footer from "../../../components/footer";
 
 import "../home.scss";
 
@@ -21,6 +22,7 @@ const Home = () => {
             <RecentWorks />
             <Autores />
             <Clients />
+            <Footer />
         </div>
     );
 };

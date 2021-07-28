@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Navbar from "../navbar/Navbar";
+import Navbar from "../../../components/navbar/Navbar";
 
 const PageWrapper = ({ children }) => {
     return (

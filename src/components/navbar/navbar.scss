@@ -1,4 +1,4 @@
-@import "../../../styles/global-variables";
+@import "../../styles/global-variables";
 
 .#{$css-namespace} {
     .navbar {
@@ -18,7 +18,7 @@
     .navbar-brand {
         width: 220px;
         height: 80px;
-        background: url("../../../styles/img/logo.png") no-repeat 0 50%;
+        background: url("../../styles/img/logo.png") no-repeat 0 50%;
         text-indent: -9999px;
     }
     .navbar-nav {
