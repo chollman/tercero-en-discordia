@@ -23,6 +23,7 @@ const Clients = () => {
                             width="970"
                             height="150"
                             alt="Próximamente"
+                            fluid
                         />
                     </Col>
                 </Row>
