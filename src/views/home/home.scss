@@ -61,4 +61,16 @@
             float: left;
         }
     }
+
+    #recent-works {
+        background: #2dcc70;
+        color: #fff;
+
+        .lead {
+            margin-bottom: 20px;
+            font-size: 21px;
+            font-weight: 200;
+            line-height: 30px;
+        }
+    }
 }
