@@ -1,18 +1,16 @@
 @import "../../styles/global-variables";
 
-.#{$css-namespace} {
-    .navbar {
+.#{$css-namespace} .main-navbar {
+    padding: 0;
+    background-color: #ffffff !important;
+
+    .container {
         padding: 0;
-        background-color: #ffffff !important;
+    }
 
+    @media (min-width: 1200px) {
         .container {
-            padding: 0;
-        }
-
-        @media (min-width: 1200px) {
-            .container {
-                max-width: 1170px !important;
-            }
+            max-width: 1140px !important;
         }
     }
     .navbar-brand {

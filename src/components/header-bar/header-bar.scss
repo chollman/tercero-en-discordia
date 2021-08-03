@@ -1,0 +1,33 @@
+@import '../../styles/global-variables';
+
+.#{$css-namespace} .header-bar {
+    margin-top: 100px;
+    background-color: #2dcc70;
+    color: #ffffff;
+    padding: 20px 0;
+
+    h1 {
+        font-size: 38.5px;
+    }
+
+    .header-breadcrumb {
+        .navbar {
+            justify-content: flex-end;
+            height: 100%;
+
+            .nav-link {
+                &:after {
+                    content: "/";
+                    padding-left: 1rem;
+                    color: #ffffff;
+                }
+                &:last-child {
+                    &:after {
+                        content: "";
+                        padding-left: 0;
+                    }
+                }
+            }
+        }
+    }
+}

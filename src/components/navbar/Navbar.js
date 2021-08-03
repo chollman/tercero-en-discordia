@@ -8,7 +8,13 @@ import "./navbar.scss";
 
 const NavbarGlobal = () => {
     return (
-        <Navbar expand="md" bg="light" variant="light" fixed="top">
+        <Navbar
+            className="main-navbar"
+            expand="md"
+            bg="light"
+            variant="light"
+            fixed="top"
+        >
             <Container>
                 <LinkContainer to="/">
                     <Navbar.Brand>Editorial TED</Navbar.Brand>
@@ -20,7 +26,7 @@ const NavbarGlobal = () => {
                         <IndexLinkContainer to="/">
                             <Nav.Link>Home</Nav.Link>
                         </IndexLinkContainer>
-                        <LinkContainer to="/admin">
+                        <LinkContainer to="/quienessomos">
                             <Nav.Link>Quiénes somos</Nav.Link>
                         </LinkContainer>
                         <LinkContainer to="/admin">

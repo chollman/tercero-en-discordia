@@ -5,6 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import PageWrapper from "./ui/layout/page-wrapper/PageWrapper";
 import Admin from "./views/admin";
 import Home from "./views/home";
+import QuienesSomos from "./views/quienessomos";
 
 const Routes = ({ location }) => {
     return (
@@ -12,6 +13,11 @@ const Routes = ({ location }) => {
             <Route path="/admin">
                 <PageWrapper location={location}>
                     <Admin />
+                </PageWrapper>
+            </Route>
+            <Route path="/quienessomos">
+                <PageWrapper location={location}>
+                    <QuienesSomos />
                 </PageWrapper>
             </Route>
             <Route path="/">
