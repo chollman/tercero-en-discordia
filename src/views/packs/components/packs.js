@@ -25,6 +25,7 @@ const Packs = () => {
                             <h2>Elegí el Pack que más se ajuste a tu proyecto</h2>
                         </Col>
                     </Row>
+
                     <Row>
                         <Col md={3}>
                             <Plan title="Edición Plata" classes="plan1">

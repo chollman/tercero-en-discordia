@@ -1,5 +1,43 @@
 @import '../../styles/global-variables';
 
 .#{$css-namespace} .ted-faq {
+    ul.faq {
+        list-style: none;
+        margin: 0;
+        padding: 0;
 
+        li {
+            line-height: 20px;
+            margin-top: 30px;
+
+            & > div {
+                margin-left: 70px;
+            }
+
+            ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+
+                li {
+                    margin-top: 10px;
+                }
+            }
+
+            h4 {
+                font-size: 17.5px;
+            }
+        }
+    }
+    span.number {
+        display: block;
+        float: left;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        background: #2dcc70;
+        color: #fff;
+        font-size: 24px;
+    }
 }
