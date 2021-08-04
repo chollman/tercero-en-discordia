@@ -8,6 +8,7 @@ body {
     font-size: 12px;
     background: #f5f5f5;
     margin-top: 80px;
+    line-height: 20px;
 
     section.main-section {
         padding: 50px 0;
@@ -39,6 +40,12 @@ body {
             margin: 0;
             line-height: 1.2;
         }
+    }
+
+    hr {
+        margin: 20px 0;
+        border: 0;
+        color: #ffffff;
     }
 }
 
