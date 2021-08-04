@@ -1,5 +1,54 @@
 @import '../../styles/global-variables';
 
 .#{$css-namespace} .ted-quienessomos {
+    hr {
+        margin: 20px 0;
+        border: 0;
+        color: #ffffff;
+    }
+    .progress {
+        height: 30px;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0;
+        margin-bottom: 10px;
 
+        .progress-bar {
+            text-align: left;
+            padding-left: 10px;
+        }
+
+        &.capacity {
+            .progress-bar {
+                background-color: #0e90d2;
+            }
+        }
+        &.honesty {
+            .progress-bar {
+                background-color: #faa732;
+            }
+        }
+        &.dedication {
+            .progress-bar {
+                background-color: #4bb1cf;
+            }
+        }
+        &.improvement {
+            .progress-bar {
+                background-color: #dd514c;
+            }
+        }
+    }
+
+    .accordion {
+        margin-bottom: 2px;
+    }
+
+    .accordion-button {
+        color: #666;
+        font-weight: 700;
+        padding: 8px 15px;
+        font-size: 12px;
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
 }
