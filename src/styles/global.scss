@@ -13,7 +13,7 @@ body {
         padding: 50px 0;
     }
 
-    h1, body h2, body h3, body h4, body .created {
+    h1, h2, h3, h4, .created {
         font-family: "Fjalla One", serif;
         font-weight: normal;
     }
@@ -32,6 +32,13 @@ body {
 
     .ui.header {
         color: $text-color;
+    }
+
+    .accordion {
+        .accordion-header {
+            margin: 0;
+            line-height: 1.2;
+        }
     }
 }
 
