@@ -29,25 +29,25 @@ const NavbarGlobal = () => {
                         <LinkContainer to="/quienessomos">
                             <Nav.Link>Quiénes somos</Nav.Link>
                         </LinkContainer>
-                        <LinkContainer to="/admin">
+                        <LinkContainer to="/servicios">
                             <Nav.Link>Servicios</Nav.Link>
                         </LinkContainer>
-                        <LinkContainer to="/admin">
+                        <LinkContainer to="/packs">
                             <Nav.Link>Packs</Nav.Link>
                         </LinkContainer>
-                        <LinkContainer to="/admin">
+                        <LinkContainer to="/libreria">
                             <Nav.Link>Librería</Nav.Link>
                         </LinkContainer>
-                        <LinkContainer to="/admin">
+                        <LinkContainer to="/faq">
                             <Nav.Link>Faq</Nav.Link>
                         </LinkContainer>
-                        <LinkContainer to="/admin">
+                        <LinkContainer to="/blog">
                             <Nav.Link>Blog</Nav.Link>
                         </LinkContainer>
-                        <LinkContainer to="/admin">
+                        <LinkContainer to="/precios">
                             <Nav.Link>Precios</Nav.Link>
                         </LinkContainer>
-                        <LinkContainer to="/admin">
+                        <LinkContainer to="/contacto">
                             <Nav.Link>Contacto</Nav.Link>
                         </LinkContainer>
                     </Nav>
