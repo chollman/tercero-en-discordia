@@ -10,11 +10,10 @@ const Footer = () => {
         <footer id="footer">
             <Container>
                 <Row>
-                    <Col className="cp" md={4}>
-                        &copy; 2021 Editorial TED. Todos los derechos
-                        reservados.
+                    <Col className="cp" md={3}>
+                        &copy; 2021 Editorial TED. Todos los derechos reservados.
                     </Col>
-                    <Col md={8}>
+                    <Col md={9}>
                         <Row>
                             <Col className="cp with-icons" md={5}>
                                 <i className="fas fa-envelope"></i>
@@ -27,8 +26,7 @@ const Footer = () => {
                                 <Row>
                                     <Col className="cp with-icons" md={6}>
                                         <i className="fas fa-phone"></i>
-                                        <strong>Whatsapp:</strong> (54) 9 11
-                                        6054 3905
+                                        <strong>Whatsapp:</strong> (54) 9 11 6054 3905
                                     </Col>
                                     <Col md={6}>
                                         <ul className="social pull-right">
