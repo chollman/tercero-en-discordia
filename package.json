@@ -7,6 +7,7 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "bootstrap": "^5.0.2",
+    "http-proxy-middleware": "^2.0.1",
     "mdb-react-ui-kit": "^1.2.0",
     "node-sass": "^6.0.1",
     "prop-types": "^15.7.2",
