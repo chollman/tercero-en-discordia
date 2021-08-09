@@ -7,7 +7,13 @@ import reduxThunk from "redux-thunk";
 import reducers from "./state/reducers";
 import { composeWithDevTools } from "redux-devtools-extension";
 
-const store = createStore(reducers, {}, composeWithDevTools(applyMiddleware(reduxThunk)));
+const store = createStore(
+    reducers,
+    {
+        auth: { authenticated: localStorage.getItem("token") },
+    },
+    composeWithDevTools(applyMiddleware(reduxThunk))
+);
 
 ReactDOM.render(
     <Provider store={store}>
