@@ -3,7 +3,10 @@ import PropTypes from "prop-types";
 import { Route, Switch } from "react-router-dom";
 
 import PageWrapper from "./ui/layout/page-wrapper/PageWrapper";
-import Admin from "./views/admin";
+import Admin from "./views/auth";
+import Login from "./views/auth/components/login";
+import Logout from "./views/auth/components/logout";
+import Signup from "./views/auth/components/register";
 import Home from "./views/home";
 import QuienesSomos from "./views/quienessomos";
 import Servicios from "./views/servicios";
@@ -20,6 +23,21 @@ const Routes = ({ location }) => {
             <Route path="/admin">
                 <PageWrapper location={location}>
                     <Admin />
+                </PageWrapper>
+            </Route>
+            <Route path="/registro">
+                <PageWrapper location={location}>
+                    <Signup />
+                </PageWrapper>
+            </Route>
+            <Route path="/login">
+                <PageWrapper location={location}>
+                    <Login />
+                </PageWrapper>
+            </Route>
+            <Route path="/logout">
+                <PageWrapper location={location}>
+                    <Logout />
                 </PageWrapper>
             </Route>
             <Route path="/quienessomos">

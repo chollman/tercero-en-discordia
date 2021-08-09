@@ -8,13 +8,7 @@ import "./navbar.scss";
 
 const NavbarGlobal = () => {
     return (
-        <Navbar
-            className="main-navbar"
-            expand="md"
-            bg="light"
-            variant="light"
-            fixed="top"
-        >
+        <Navbar className="main-navbar" expand="md" bg="light" variant="light" fixed="top">
             <Container>
                 <LinkContainer to="/">
                     <Navbar.Brand>Editorial TED</Navbar.Brand>
@@ -49,6 +43,18 @@ const NavbarGlobal = () => {
                         </LinkContainer>
                         <LinkContainer to="/contacto">
                             <Nav.Link>Contacto</Nav.Link>
+                        </LinkContainer>
+                        <LinkContainer to="/admin">
+                            <Nav.Link>Admin</Nav.Link>
+                        </LinkContainer>
+                        <LinkContainer to="/registro">
+                            <Nav.Link>Registro</Nav.Link>
+                        </LinkContainer>
+                        <LinkContainer to="/login">
+                            <Nav.Link>Login</Nav.Link>
+                        </LinkContainer>
+                        <LinkContainer to="/logout">
+                            <Nav.Link>Salir</Nav.Link>
                         </LinkContainer>
                     </Nav>
                 </Navbar.Collapse>
