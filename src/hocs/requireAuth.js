@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-export default (ChildComponent) => {
+const RequireAuth = (ChildComponent) => {
     const ComposedComponent = (props) => {
         let history = useHistory();
         const { authenticated } = props;
@@ -20,3 +20,5 @@ export default (ChildComponent) => {
 
     return connect(mapStateToProps)(ComposedComponent);
 };
+
+export default RequireAuth;

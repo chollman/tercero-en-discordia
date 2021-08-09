@@ -11,3 +11,12 @@ export const signup = (formProps, callback) => async (dispatch) => {
         dispatch({ type: AUTH_ERROR, payload: "El mail ya está en uso" });
     }
 };
+
+export const logout = (callback) => {
+    localStorage.removeItem("token");
+    callback();
+    return {
+        type: AUTH_USER,
+        payload: "",
+    };
+};
