@@ -3,10 +3,13 @@ import { IndexLinkContainer, LinkContainer } from "react-router-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import React from "react";
+import { useSelector } from "react-redux";
 
 import "./navbar.scss";
 
 const NavbarGlobal = () => {
+    const authenticated = useSelector((state) => state.auth.authenticated);
+
     return (
         <Navbar className="main-navbar" expand="md" bg="light" variant="light" fixed="top">
             <Container>
@@ -44,18 +47,26 @@ const NavbarGlobal = () => {
                         <LinkContainer to="/contacto">
                             <Nav.Link>Contacto</Nav.Link>
                         </LinkContainer>
-                        <LinkContainer to="/admin">
-                            <Nav.Link>Admin</Nav.Link>
-                        </LinkContainer>
-                        <LinkContainer to="/registro">
-                            <Nav.Link>Registro</Nav.Link>
-                        </LinkContainer>
-                        <LinkContainer to="/login">
-                            <Nav.Link>Login</Nav.Link>
-                        </LinkContainer>
-                        <LinkContainer to="/logout">
-                            <Nav.Link>Salir</Nav.Link>
-                        </LinkContainer>
+                        {!authenticated && (
+                            <>
+                                <LinkContainer to="/registro">
+                                    <Nav.Link>Registro</Nav.Link>
+                                </LinkContainer>
+                                <LinkContainer to="/login">
+                                    <Nav.Link>Login</Nav.Link>
+                                </LinkContainer>
+                            </>
+                        )}
+                        {authenticated && (
+                            <>
+                                <LinkContainer to="/admin">
+                                    <Nav.Link>Admin</Nav.Link>
+                                </LinkContainer>
+                                <LinkContainer to="/logout">
+                                    <Nav.Link>Salir</Nav.Link>
+                                </LinkContainer>
+                            </>
+                        )}
                     </Nav>
                 </Navbar.Collapse>
             </Container>
