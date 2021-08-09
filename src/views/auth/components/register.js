@@ -1,16 +1,22 @@
 import React, { useEffect } from "react";
 import { Form, Field } from "react-final-form";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { signup } from "../../../state/auth/actions";
 
 const Signup = () => {
     const dispatch = useDispatch();
+    let history = useHistory();
 
     const errorMessage = useSelector((state) => state.auth.errorMessage);
 
     const validate = () => {};
     const onSubmit = (formProps) => {
-        dispatch(signup(formProps));
+        dispatch(
+            signup(formProps, () => {
+                history.push("/admin");
+            })
+        );
     };
 
     useEffect(() => {
