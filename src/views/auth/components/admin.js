@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import requireAuth from "../../../hocs/requireAuth";
 
 const Admin = () => {
     useEffect(() => {
@@ -8,4 +9,4 @@ const Admin = () => {
     return <div>Admin</div>;
 };
 
-export default Admin;
+export default requireAuth(Admin);
