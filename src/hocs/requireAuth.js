@@ -11,7 +11,7 @@ const RequireAuth = (ChildComponent) => {
             if (!authenticated) history.push("/");
         });
 
-        return <ChildComponent props={props} />;
+        return <>{authenticated && <ChildComponent props={props} />}</>;
     };
 
     const mapStateToProps = (state) => ({
