@@ -9,7 +9,7 @@ const RequireAuth = (ChildComponent) => {
 
         useEffect(() => {
             if (!authenticated) history.push("/");
-        }, [authenticated, history]);
+        });
 
         return <ChildComponent props={props} />;
     };

@@ -20,3 +20,14 @@ export const logout = (callback) => {
         payload: "",
     };
 };
+
+export const login = (formProps, callback) => async (dispatch) => {
+    try {
+        const response = await axios.post("http://localhost:5000/signin", formProps);
+        dispatch({ type: AUTH_USER, payload: response.data.token });
+        localStorage.setItem("token", response.data.payload);
+        callback();
+    } catch (e) {
+        dispatch({ type: AUTH_ERROR, payload: "Las credenciales no son válidas" });
+    }
+};
