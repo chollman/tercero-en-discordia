@@ -2,7 +2,6 @@ import { AUTH_USER, AUTH_ERROR } from "../constants";
 import axios from "axios";
 
 const API_URL = process.env.API_URL || "http://localhost:5000";
-console.log(process.env);
 
 export const signup = (formProps, callback) => async (dispatch) => {
     try {
@@ -26,6 +25,7 @@ export const logout = (callback) => {
 
 export const login = (formProps, callback) => async (dispatch) => {
     try {
+        console.log(process.env);
         const response = await axios.post(API_URL + "/signin", formProps);
         dispatch({ type: AUTH_USER, payload: response.data.token });
         localStorage.setItem("token", response.data.payload);
