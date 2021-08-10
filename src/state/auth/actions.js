@@ -2,6 +2,7 @@ import { AUTH_USER, AUTH_ERROR } from "../constants";
 import axios from "axios";
 
 const API_URL = process.env.API_URL || "http://localhost:5000";
+console.log(process.env);
 
 export const signup = (formProps, callback) => async (dispatch) => {
     try {
