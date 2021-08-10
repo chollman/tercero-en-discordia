@@ -11,7 +11,7 @@ const NavbarGlobal = () => {
     const authenticated = useSelector((state) => state.auth.authenticated);
 
     return (
-        <Navbar className="main-navbar" expand="md" bg="light" variant="light" fixed="top">
+        <Navbar className="main-navbar" collapseOnSelect expand="md" bg="light" variant="light" fixed="top">
             <Container>
                 <LinkContainer to="/">
                     <Navbar.Brand>Editorial TED</Navbar.Brand>

@@ -4,15 +4,6 @@
     padding: 0;
     background-color: #ffffff !important;
 
-    .container {
-        padding: 0;
-    }
-
-    @media (min-width: 1200px) {
-        .container {
-            max-width: 1140px !important;
-        }
-    }
     .navbar-brand {
         width: 220px;
         height: 80px;
