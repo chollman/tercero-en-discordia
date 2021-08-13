@@ -2,7 +2,7 @@ import { AUTH_USER, AUTH_ERROR } from "../constants";
 import axios from "axios";
 
 const API_URL =
-    process.env.NODE_ENV === "production" ? "https://serene-tor-54135.herokuapp.com" : "http://localhost:5000";
+    process.env.NODE_ENV === "production" ? "https://serene-tor-54135.herokuapp.com" : "http://localhost:5000/api";
 
 export const signup = (formProps, callback) => async (dispatch) => {
     try {
