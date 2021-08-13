@@ -1,2 +1,6 @@
-export const AUTH_USER = "auth_user";
-export const AUTH_ERROR = "auth_error";
+export const AUTH_USER = "AUTH_USER";
+export const AUTH_ERROR = "AUTH_ERROR";
+
+export const FETCHING_BOOKS = "FETCHING_BOOKS";
+export const FETCHING_BOOKS_SUCCESS = "FETCHING_BOOKS_SUCCESS";
+export const FETCHING_BOOKS_ERROR = "FETCHING_BOOKS_ERROR";
