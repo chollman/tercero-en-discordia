@@ -49,9 +49,9 @@ const NavbarGlobal = () => {
                         </LinkContainer>
                         {!authenticated && (
                             <>
-                                <LinkContainer to="/registro">
-                                    <Nav.Link>Registro</Nav.Link>
-                                </LinkContainer>
+                                {/*<LinkContainer to="/registro">*/}
+                                {/*    <Nav.Link>Registro</Nav.Link>*/}
+                                {/*</LinkContainer>*/}
                                 <LinkContainer to="/login">
                                     <Nav.Link>Login</Nav.Link>
                                 </LinkContainer>
