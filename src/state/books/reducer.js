@@ -15,8 +15,8 @@ function booksReducer(state = INITIAL_STATE, action) {
             return {
                 ...state,
                 isFetching: false,
-                booksArr: action.payload.books,
-                numberOfBooks: action.payload.numberOfBooks,
+                booksArr: action.payload,
+                numberOfBooks: action.payload.length,
                 errorMessage: "",
             };
         case FETCHING_BOOKS_ERROR:

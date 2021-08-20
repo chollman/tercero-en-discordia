@@ -1,2 +1,2 @@
-import Libreria from "./components/libreria";
+import Libreria from "./containers/libreria";
 export default Libreria;

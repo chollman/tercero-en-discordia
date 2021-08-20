@@ -13,13 +13,10 @@ const MainInfo = () => {
                     <Col xs={9}>
                         <h4>Una editorial al servicio de los Autores</h4>
                         <p className="no-margin">
-                            Tercero en discordia es una Editorial al servicio de
-                            la cultura impulsando la edición de libros de todo
-                            tipo. Cuenta con profesionales de Edición y Diseño
-                            gráfico al servicio de los autores e instituciones
-                            que deseen realizar el sueño de publicar de una
-                            manera profesional y obteniendo como resultado
-                            libros con garantía de calidad.
+                            Tercero en discordia es una Editorial al servicio de la cultura impulsando la edición de
+                            libros de todo tipo. Cuenta con profesionales de Edición y Diseño gráfico al servicio de los
+                            autores e instituciones que deseen realizar el sueño de publicar de una manera profesional y
+                            obteniendo como resultado libros con garantía de calidad.
                         </p>
                     </Col>
                     <Col className="ted-info-button">

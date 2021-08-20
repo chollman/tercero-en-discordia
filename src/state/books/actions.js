@@ -1,8 +1,7 @@
 import { FETCHING_BOOKS, FETCHING_BOOKS_ERROR, FETCHING_BOOKS_SUCCESS } from "../constants";
 import axios from "axios";
 
-const API_URL =
-    process.env.NODE_ENV === "production" ? "https://serene-tor-54135.herokuapp.com" : "http://localhost:5000/api";
+const API_URL = process.env.REACT_APP_API_URL;
 
 export const handleFetchingBooks = () => async (dispatch) => {
     dispatch({ type: FETCHING_BOOKS });
