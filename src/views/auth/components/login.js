@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Form, Field } from "react-final-form";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { login } from "../../../state/auth/actions";
 import FormBootstrap from "react-bootstrap/Form";
