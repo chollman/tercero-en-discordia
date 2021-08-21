@@ -13,7 +13,7 @@ const Login = () => {
     const dispatch = useDispatch();
     let history = useHistory();
 
-    const errorMessage = useSelector((state) => state.auth.errorMessage);
+    //const errorMessage = useSelector((state) => state.auth.errorMessage);
 
     const validate = () => {};
     const onSubmit = (formProps) => {
