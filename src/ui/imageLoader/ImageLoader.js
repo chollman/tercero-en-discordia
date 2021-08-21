@@ -1,35 +1,27 @@
-import React, { useState } from 'react';
-import { Image, Placeholder } from 'semantic-ui-react';
+import React, { useState } from "react";
+import Image from "react-bootstrap/Image";
+import Spinner from "react-bootstrap/Spinner";
 
-const ImageLoader = props => {
+const ImageLoader = (props) => {
     const [show, setShow] = useState(false);
-    let width = 'auto';
-    let height = 'auto';
 
-    if (props.size && props.size === 'mini') {
-        width = '35px';
-        height = '35px';
-    }
+    const onImageLoad = () => {
+        setShow(true);
+        props.callback();
+    };
+
+    const { callback, ...imageProps } = props;
 
     return (
         <>
             {!show && (
-                <Placeholder
-                    style={{
-                        borderRadius: props.circular ? '50%' : '0',
-                        marginRight: props.spaced === 'right' ? '.5em' : '0',
-                        marginLeft: props.spaced === 'left' ? '.5em' : '0',
-                        verticalAlign: 'middle',
-                        display: 'inline-block',
-                        width: width,
-                        height: height,
-                        fontSize: '.78571429rem',
-                    }}
-                >
-                    <Placeholder.Image square />
-                </Placeholder>
+                <div className="img-placeholder">
+                    <Spinner animation="border" role="status">
+                        <span className="visually-hidden">Cargando imagen...</span>
+                    </Spinner>
+                </div>
             )}
-            <Image hidden={!show} onLoad={() => setShow(true)} {...props} />
+            <Image hidden={!show} onLoad={onImageLoad} {...imageProps} />
         </>
     );
 };

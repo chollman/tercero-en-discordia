@@ -51,4 +51,17 @@ body {
 
 .#{$css-namespace} {
     @import 'spacing';
+
+    .ted-spinner-common {
+        min-height: 500px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    @media (max-width: 600px) {
+        .ted-spinner-common {
+            min-height: 50vh;
+        }
+    }
 }

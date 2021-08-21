@@ -1,11 +1,11 @@
 import React from "react";
 import Footer from "../../../components/footer";
 import HeaderBar from "../../../components/header-bar";
-import Image from "react-bootstrap/Image";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-import { LinkContainer } from "react-router-bootstrap";
+import Spinner from "react-bootstrap/Spinner";
+import Book from "./book";
 
 import "../libreria.scss";
 
@@ -24,24 +24,7 @@ const Libreria = ({ books }) => {
                         {books.booksArr.map((book) => {
                             return (
                                 <Col md={3} key={book._id}>
-                                    <LinkContainer to={`/libreria/libro/${book._id}`}>
-                                        <div className="ted-book">
-                                            <div className="ted-book-cover">
-                                                {book.hasCoverImage && (
-                                                    <div>
-                                                        <Image
-                                                            rounded
-                                                            className="closing-quote"
-                                                            src={`${process.env.REACT_APP_API_URL}/books/cover/${book._id}`}
-                                                            fluid
-                                                        />
-                                                    </div>
-                                                )}
-                                            </div>
-                                            <h3>{book.title}</h3>
-                                            <i>{book.author}</i>
-                                        </div>
-                                    </LinkContainer>
+                                    <Book book={book} />
                                 </Col>
                             );
                         })}
@@ -54,7 +37,17 @@ const Libreria = ({ books }) => {
 };
 
 const renderLoading = () => {
-    return <div>loading</div>;
+    return (
+        <Container>
+            <Row>
+                <Col className="ted-spinner-common" md={12}>
+                    <Spinner animation="border" role="status">
+                        <span className="visually-hidden">Cargando...</span>
+                    </Spinner>
+                </Col>
+            </Row>
+        </Container>
+    );
 };
 const renderError = () => {
     return <div>error</div>;
