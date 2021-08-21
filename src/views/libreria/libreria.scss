@@ -7,7 +7,7 @@
         margin: 15px 0;
         @include border-radius(.25rem);
         @include box-shadow(0px, 0px, 5px, 0px, rgba(0,0,0,0.2));
-        transition: all ease 500ms;
+        transition: all ease 300ms;
 
         &.fadein {
             transform: scale(1.1);
