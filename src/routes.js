@@ -11,7 +11,8 @@ import Home from "./views/home";
 import QuienesSomos from "./views/quienessomos";
 import Servicios from "./views/servicios";
 import Packs from "./views/packs";
-import Libreria from "./views/libreria";
+import Libreria from "./views/libreria/containers/libreria";
+import BookDetail from "./views/libreria/containers/book-detail";
 import Faq from "./views/faq";
 import Blog from "./views/blog";
 import Precios from "./views/precios";
@@ -53,6 +54,11 @@ const Routes = ({ location }) => {
             <Route path="/packs">
                 <PageWrapper location={location}>
                     <Packs />
+                </PageWrapper>
+            </Route>
+            <Route path="/libreria/libro/:bookId">
+                <PageWrapper location={location}>
+                    <BookDetail />
                 </PageWrapper>
             </Route>
             <Route path="/libreria">
