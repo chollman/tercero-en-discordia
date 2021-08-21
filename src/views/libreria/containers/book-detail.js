@@ -13,7 +13,7 @@ const BookDetailContainer = () => {
     useEffect(() => {
         document.title = "Librería | Editorial TED";
         dispatch(handleFetchingBook(bookId));
-    }, [dispatch]);
+    }, [bookId, dispatch]);
 
     return <div>Detalle {currentBook.title}</div>;
 };

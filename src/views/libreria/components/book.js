@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ReactPlaceholder from "react-placeholder";
 import Image from "react-bootstrap/Image";
 import { LinkContainer } from "react-router-bootstrap";
