@@ -36,10 +36,19 @@ body {
     }
 
     .accordion {
+        margin-bottom: 2px;
         .accordion-header {
             margin: 0;
             line-height: 1.2;
         }
+    }
+
+    .accordion-button {
+        color: #666;
+        font-weight: 700;
+        padding: 8px 15px;
+        font-size: 12px;
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     }
 
     hr {
