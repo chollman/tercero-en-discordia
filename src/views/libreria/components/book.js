@@ -1,23 +1,33 @@
-import React, { useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import ReactPlaceholder from "react-placeholder";
-import Image from "react-bootstrap/Image";
+//import Image from "react-bootstrap/Image";
 import { LinkContainer } from "react-router-bootstrap";
+import ImageLoader from "../../../ui/imageLoader";
 
 const Book = ({ book }) => {
     const [show, setShow] = useState(false);
+    const elemRef = useRef();
+
+    useEffect(() => {
+        const divElement = elemRef.current;
+        if (divElement) setShow(true);
+    }, []);
 
     return (
         <LinkContainer to={`/libreria/libro/${book._id}`}>
             <div className={`ted-book ${show ? "" : "fadein"}`}>
                 <div className="ted-book-cover">
-                    {book.hasCoverImage && (
+                    {book.hasCoverImage ? (
                         <div>
-                            <Image
-                                hidden={!show}
-                                onLoad={() => setShow(true)}
+                            <ImageLoader
+                                callback={() => setShow(true)}
                                 rounded
                                 src={`${process.env.REACT_APP_API_URL}/books/cover/${book._id}`}
                             />
+                        </div>
+                    ) : (
+                        <div ref={elemRef} className="book-cover-placeholder">
+                            <i>Sin carátula</i>
                         </div>
                     )}
                 </div>

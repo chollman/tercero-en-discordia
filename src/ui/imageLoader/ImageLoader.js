@@ -7,7 +7,7 @@ const ImageLoader = (props) => {
 
     const onImageLoad = () => {
         setShow(true);
-        props.callback();
+        if (props.callback) props.callback();
     };
 
     const { callback, ...imageProps } = props;
@@ -15,7 +15,10 @@ const ImageLoader = (props) => {
     return (
         <>
             {!show && (
-                <div className="img-placeholder">
+                <div
+                    className="img-placeholder"
+                    style={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+                >
                     <Spinner animation="border" role="status">
                         <span className="visually-hidden">Cargando imagen...</span>
                     </Spinner>

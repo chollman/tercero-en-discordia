@@ -9,6 +9,16 @@
         @include box-shadow(0px, 0px, 5px, 0px, rgba(0,0,0,0.2));
         transition: all ease 300ms;
 
+        .book-cover-placeholder {
+            width: 100%;
+            min-height: 300px;
+            background-color: #CCCCCC;
+            @include border-radius(.25rem);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
         &.fadein {
             transform: scale(1.1);
             opacity: 0;
@@ -20,9 +30,6 @@
             .img-placeholder {
                 width: 100%;
                 min-height: 300px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
             }
 
             img {
