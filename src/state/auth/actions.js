@@ -6,7 +6,7 @@ const API_URL = process.env.REACT_APP_API_URL;
 export const signup = (formProps, callback) => async (dispatch) => {
     try {
         const response = await axios.post(API_URL + "/signup", formProps);
-        dispatch({ type: AUTH_USER, payload: response.data.token });
+        dispatch({ type: AUTH_USER, payload: response.data });
         localStorage.setItem("token", response.data.token);
         callback();
     } catch (e) {
@@ -26,7 +26,7 @@ export const logout = (callback) => {
 export const login = (formProps, callback) => async (dispatch) => {
     try {
         const response = await axios.post(API_URL + "/signin", formProps);
-        dispatch({ type: AUTH_USER, payload: response.data.token });
+        dispatch({ type: AUTH_USER, payload: response.data });
         localStorage.setItem("token", response.data.token);
         callback();
     } catch (e) {

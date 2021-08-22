@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Form, Field } from "react-final-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { login } from "../../../state/auth/actions";
 import FormBootstrap from "react-bootstrap/Form";
@@ -13,7 +13,7 @@ const Login = () => {
     const dispatch = useDispatch();
     let history = useHistory();
 
-    //const errorMessage = useSelector((state) => state.auth.errorMessage);
+    const errorMessage = useSelector((state) => state.auth.errorMessage);
 
     const validate = () => {};
     const onSubmit = (formProps) => {
@@ -58,7 +58,11 @@ const Login = () => {
                                                 component={TextFieldAdapter}
                                                 type="password"
                                                 placeholder="Contraseña"
+                                                isInvalid={!!errorMessage}
                                             />
+                                            <FormBootstrap.Control.Feedback type="invalid">
+                                                {errorMessage}
+                                            </FormBootstrap.Control.Feedback>
                                         </FormBootstrap.Group>
                                         <Button variant="primary" type="submit" disabled={submitting}>
                                             Submit
