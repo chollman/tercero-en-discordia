@@ -3,7 +3,7 @@ import { AUTH_USER, AUTH_ERROR } from "../constants";
 const INITIAL_STATE = {
     authenticated: "",
     errorMessage: "",
-    currentUser: {},
+    currentUser: undefined,
 };
 
 function authReducer(state = INITIAL_STATE, action) {
@@ -12,7 +12,7 @@ function authReducer(state = INITIAL_STATE, action) {
             return {
                 ...state,
                 authenticated: action.payload.token,
-                currentUser: action.payload.user,
+                currentUser: action.payload.user._id,
                 errorMessage: "",
             };
         case AUTH_ERROR:

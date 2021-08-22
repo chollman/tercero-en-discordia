@@ -10,7 +10,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 const store = createStore(
     reducers,
     {
-        auth: { authenticated: localStorage.getItem("token") },
+        auth: { authenticated: localStorage.getItem("token"), currentUser: localStorage.getItem("userId") },
     },
     composeWithDevTools(applyMiddleware(reduxThunk))
 );
