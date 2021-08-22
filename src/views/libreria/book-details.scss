@@ -1,0 +1,11 @@
+@import '../../styles/global-variables';
+
+.#{$css-namespace} .ted-book-details {
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    .img-placeholder {
+        width: 100%;
+        min-height: 300px;
+    }
+}
