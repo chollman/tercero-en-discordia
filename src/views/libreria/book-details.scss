@@ -4,8 +4,50 @@
     padding-top: 15px;
     padding-bottom: 15px;
 
+    .book-cover {
+        margin-bottom: 15px;
+    }
+
+    .book-cover-placeholder {
+        width: 100%;
+        min-height: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-style: italic;
+        padding: 20px;
+        text-align: center;
+        background-color: #eeeeee;
+        @include border-radius(5px);
+    }
+
+    h5 {
+        span {
+            color: #0e90d2;
+        }
+    }
+
     .img-placeholder {
         width: 100%;
         min-height: 300px;
+    }
+
+    .book-pages {
+        font-size: 15px;
+        i {
+            margin-right: 10px;
+        }
+    }
+
+    .book-description {
+        font-size: 14px;
+    }
+
+    .book-category {
+        font-size: 14px;
+    }
+
+    .book-data {
+        margin-top: 50px;
     }
 }

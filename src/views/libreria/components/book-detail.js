@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 
 import "../book-details.scss";
 import HeaderBar from "../../../components/header-bar";
@@ -21,7 +22,7 @@ const BookDetail = ({ book, isFetching }) => {
                     <Row>
                         <Col md={3}>
                             {book.hasCoverImage ? (
-                                <div>
+                                <div className="book-cover">
                                     <ImageLoader
                                         hidden={!show}
                                         callback={() => setShow(true)}
@@ -31,10 +32,10 @@ const BookDetail = ({ book, isFetching }) => {
                                     />
                                 </div>
                             ) : (
-                                <div className="book-cover-placeholder">No hay carátula del libro definal todavía</div>
+                                <div className="book-cover-placeholder">No hay carátula del libro definida todavía</div>
                             )}
                             {book.hasBackCoverImage && (
-                                <div>
+                                <div className="book-cover">
                                     <ImageLoader
                                         hidden={!show}
                                         callback={() => setShow(true)}
@@ -47,18 +48,24 @@ const BookDetail = ({ book, isFetching }) => {
                         </Col>
                         <Col md={9}>
                             <h1 className="book-title">{book.title}</h1>
-                            <div className="book-author">Por {book.author}</div>
+                            <h5 className="book-author">
+                                Por <span>{book.author}</span>
+                            </h5>
                             {book.numberOfPages && (
                                 <div className="book-pages">
                                     <i className="far fa-copy"></i>
-                                    {book.numberOfPages}
+                                    {book.numberOfPages} páginas
                                 </div>
                             )}
                             <hr />
                             <div className="book-description">{book.description}</div>
                             <hr />
-                            {book.category && <div className="book-category">Categoria {book.category.name}</div>}
-                            <Row>
+                            {book.category && (
+                                <div className="book-category">
+                                    <Button size="sm">{book.category.name}</Button>
+                                </div>
+                            )}
+                            <Row className="book-data">
                                 {book.isbn && <Col md={6}>ISBN: {book.isbn}</Col>}
                                 {book.publicationDate && <Col md={6}>Publicado: {book.publicationDate}</Col>}
                             </Row>
