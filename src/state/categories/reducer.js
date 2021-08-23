@@ -5,7 +5,6 @@ import {
     CATEGORY_DELETE,
     CATEGORY_DELETE_SUCCESS,
     CATEGORY_DELETE_ERROR,
-    CATEGORY_EDIT,
     CATEGORY_EDIT_SUCCESS,
     CATEGORY_EDIT_ERROR,
 } from "../constants";
@@ -42,8 +41,6 @@ function categoriesReducer(state = INITIAL_STATE, action) {
                 numberOfCats: state.numberOfCats - 1,
                 errorMessage: "",
             };
-        case CATEGORY_EDIT:
-            return { ...state, isEditingOne: true };
         case CATEGORY_EDIT_SUCCESS:
             return {
                 ...state,
@@ -54,7 +51,7 @@ function categoriesReducer(state = INITIAL_STATE, action) {
                 errorMessage: "",
             };
         case CATEGORY_EDIT_ERROR:
-            return { ...state, isEditingOne: true };
+            return { ...state, errorMessage: action.payload };
         default:
             return state;
     }

@@ -10,18 +10,20 @@ import Spinner from "react-bootstrap/Spinner";
 
 const CategoryForm = ({ category }) => {
     const [isEditing, setIsEditing] = useState(false);
+    const [saving, setSaving] = useState(false);
     let [formData, setFormData] = useState({
         name: "",
     });
 
-    const { isEditingOne } = useSelector((state) => state.categories);
     const { currentUser, authenticated } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
 
     const onSubmit = (formProps) => {
+        setSaving(true);
         dispatch(
             categoryEdit(currentUser, authenticated, category._id, formProps, () => {
                 setIsEditing(false);
+                setSaving(false);
             })
         );
     };
@@ -79,7 +81,7 @@ const CategoryForm = ({ category }) => {
                                 </FormBootstrap>
                             )}
                         />
-                        {isEditingOne && (
+                        {saving && (
                             <Spinner size="sm" style={{ verticalAlign: "middle" }} animation="border" role="status">
                                 <span className="visually-hidden">Cargando...</span>
                             </Spinner>
