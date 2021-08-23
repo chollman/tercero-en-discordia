@@ -12,7 +12,6 @@ const ViewCategories = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        document.title = "Librería | Editorial TED";
         dispatch(handleFetchingCategories());
     }, [dispatch]);
 

@@ -10,6 +10,9 @@ import Spinner from "react-bootstrap/Spinner";
 
 const CategoryForm = ({ category }) => {
     const [isEditing, setIsEditing] = useState(false);
+    let [formData, setFormData] = useState({
+        name: "",
+    });
 
     const { isEditingOne } = useSelector((state) => state.categories);
     const { currentUser, authenticated } = useSelector((state) => state.auth);
@@ -28,6 +31,9 @@ const CategoryForm = ({ category }) => {
     };
 
     const onEditButtonClicked = () => {
+        setFormData({
+            name: category.name,
+        });
         setIsEditing(true);
     };
 
@@ -37,17 +43,20 @@ const CategoryForm = ({ category }) => {
         <Row className="category-item">
             <Col md={12}>
                 <Button size="sm" variant="danger" onClick={onDeleteButtonClicked}>
-                    <i className="fas fa-trash-alt"></i>
+                    <i className="fas fa-trash-alt" />
                 </Button>
                 <Button size="sm" variant="secondary" onClick={onEditButtonClicked}>
-                    <i className="fas fa-pen"></i>
+                    <i className="fas fa-pen" />
                 </Button>
                 {isEditing ? (
                     <>
                         <Form
                             onSubmit={onSubmit}
                             validate={() => {}}
-                            render={({ handleSubmit, form, submitting }) => (
+                            initialValues={{
+                                ...formData,
+                            }}
+                            render={({ handleSubmit, submitting }) => (
                                 <FormBootstrap className="edit-category-form" onSubmit={handleSubmit}>
                                     <Field
                                         name="name"
@@ -65,7 +74,7 @@ const CategoryForm = ({ category }) => {
                                         disabled={submitting}
                                         onClick={() => setIsEditing(false)}
                                     >
-                                        <i className="fas fa-times"></i>
+                                        <i className="fas fa-times" />
                                     </Button>
                                 </FormBootstrap>
                             )}
