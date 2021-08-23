@@ -1,16 +1,17 @@
 import React from "react";
 import CreateCategory from "../components/forms/create-category";
+import ViewCategories from "../components/forms/view-categories";
 
 const DashboardContent = ({ view }) => {
     const selectView = (view) => {
-        let component = <div>Default</div>;
+        let component = <h1>Hoy es un lindo día para crear contenidos</h1>;
 
         switch (view) {
             case 1:
                 component = <CreateCategory />;
                 break;
             case 2:
-                component = <div>View Categories</div>;
+                component = <ViewCategories />;
                 break;
             default:
                 return component;
