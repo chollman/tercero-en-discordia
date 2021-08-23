@@ -1,5 +1,5 @@
 import React from "react";
-import CreateCategory from "../components/forms/create-category";
+import CreateCategory from "./forms/create-category";
 import ViewCategories from "../components/forms/view-categories";
 
 const DashboardContent = ({ view }) => {
