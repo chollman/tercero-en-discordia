@@ -8,6 +8,9 @@ import {
     CATEGORY_DELETE,
     CATEGORY_DELETE_SUCCESS,
     CATEGORY_DELETE_ERROR,
+    CATEGORY_EDIT,
+    CATEGORY_EDIT_SUCCESS,
+    CATEGORY_EDIT_ERROR,
 } from "../constants";
 import axios from "axios";
 
@@ -50,5 +53,20 @@ export const categoryDelete = (currentUser, token, catId, callback) => async (di
         callback();
     } catch (e) {
         dispatch({ type: CATEGORY_DELETE_ERROR, payload: "Hubo un error al intentar eliminar la categoría." });
+    }
+};
+
+export const categoryEdit = (currentUser, token, catId, formProps, callback) => async (dispatch) => {
+    dispatch({ type: CATEGORY_EDIT });
+    try {
+        const response = await axios.put(API_URL + "/categories/" + catId + "/" + currentUser, formProps, {
+            headers: {
+                authorization: token,
+            },
+        });
+        dispatch({ type: CATEGORY_EDIT_SUCCESS, payload: { data: response.data, catId } });
+        callback();
+    } catch (e) {
+        dispatch({ type: CATEGORY_EDIT_ERROR, payload: "Hubo un error al intentar modificar la categoría." });
     }
 };

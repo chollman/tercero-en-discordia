@@ -39,12 +39,28 @@
             opacity: 1;
         }
     }
-    .result-list {
+    .category-item {
         font-size: 14px;
         border-bottom: 1px solid #cccccc;
         padding: 10px;
 
         .btn {
+            margin-right: 10px;
+        }
+    }
+
+
+    // EDIT CATEGORY
+    .edit-category-form {
+        display: inline-block;
+
+        input {
+            display: inline-block;
+            width: auto;
+            padding: .25rem .5rem;
+            font-size: .875rem;
+            border-radius: .2rem;
+            vertical-align: middle;
             margin-right: 10px;
         }
     }
