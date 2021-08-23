@@ -1,4 +1,11 @@
-import { FETCHING_CATEGORIES, FETCHING_CATEGORIES_SUCCESS, FETCHING_CATEGORIES_ERROR } from "../constants";
+import {
+    FETCHING_CATEGORIES,
+    FETCHING_CATEGORIES_SUCCESS,
+    FETCHING_CATEGORIES_ERROR,
+    CATEGORY_DELETE,
+    CATEGORY_DELETE_SUCCESS,
+    CATEGORY_DELETE_ERROR,
+} from "../constants";
 
 const INITIAL_STATE = {
     categoriesArr: [],
@@ -20,6 +27,18 @@ function categoriesReducer(state = INITIAL_STATE, action) {
                 errorMessage: "",
             };
         case FETCHING_CATEGORIES_ERROR:
+            return { ...state, isFetching: false, errorMessage: action.payload };
+        case CATEGORY_DELETE:
+            return { ...state, isFetching: true };
+        case CATEGORY_DELETE_SUCCESS:
+            return {
+                ...state,
+                isFetching: false,
+                categoriesArr: state.categoriesArr.filter((element) => element._id !== action.payload.catId),
+                numberOfCats: state.numberOfCats - 1,
+                errorMessage: "",
+            };
+        case CATEGORY_DELETE_ERROR:
             return { ...state, isFetching: false, errorMessage: action.payload };
         default:
             return state;

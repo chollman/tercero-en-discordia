@@ -38,15 +38,15 @@ export const handleFetchingCategories = () => async (dispatch) => {
     }
 };
 
-export const categoryDelete = (currentUser, token, formProps, callback) => async (dispatch) => {
+export const categoryDelete = (currentUser, token, catId, callback) => async (dispatch) => {
     dispatch({ type: CATEGORY_DELETE });
     try {
-        const response = await axios.delete(API_URL + "/categories/" + currentUser, formProps, {
+        const response = await axios.delete(API_URL + "/categories/" + catId + "/" + currentUser, {
             headers: {
                 authorization: token,
             },
         });
-        dispatch({ type: CATEGORY_DELETE_SUCCESS, payload: response.data });
+        dispatch({ type: CATEGORY_DELETE_SUCCESS, payload: { data: response.data, catId } });
         callback();
     } catch (e) {
         dispatch({ type: CATEGORY_DELETE_ERROR, payload: "Hubo un error al intentar eliminar la categoría." });

@@ -18,7 +18,6 @@ const CreateCategory = () => {
         dispatch(
             categoryCreate(currentUser, authenticated, formProps, () => {
                 setMessage("Categoría creada con éxito");
-                setTimeout(() => setMessage(""), 5000);
             })
         );
     };
