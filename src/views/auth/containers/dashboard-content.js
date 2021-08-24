@@ -1,6 +1,7 @@
 import React from "react";
 import CreateCategory from "./forms/categories/create-category";
 import ViewCategories from "./forms/categories/view-categories";
+import CreateAuthor from "./forms/authors/create-author";
 
 const DashboardContent = ({ view }) => {
     const selectView = (view) => {
@@ -12,6 +13,9 @@ const DashboardContent = ({ view }) => {
                 break;
             case 2:
                 component = <ViewCategories />;
+                break;
+            case 3:
+                component = <CreateAuthor />;
                 break;
             default:
                 return component;
