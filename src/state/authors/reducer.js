@@ -55,4 +55,4 @@ function authorsReducer(state = INITIAL_STATE, action) {
     }
 }
 
-export default authorsReducer();
+export default authorsReducer;
