@@ -3,7 +3,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Spinner from "react-bootstrap/Spinner";
-import CategoryForm from "../../containers/forms/category-form";
+import CategoryForm from "../../../containers/forms/categories/category-form";
 
 const ViewCategories = ({ categories }) => {
     return (

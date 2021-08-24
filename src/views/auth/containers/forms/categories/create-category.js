@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { categoryCreate } from "../../../../state/categories/actions";
+import { categoryCreate } from "../../../../../state/categories/actions";
 import { useDispatch, useSelector } from "react-redux";
-import CreateCategory from "../../components/forms/create-category";
+import CreateCategory from "../../../components/forms/categories/create-category";
 
 const CreateCategoryContainer = () => {
     const dispatch = useDispatch();

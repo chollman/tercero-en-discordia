@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { categoryDelete, categoryEdit } from "../../../../state/categories/actions";
+import { categoryDelete, categoryEdit } from "../../../../../state/categories/actions";
 import { useDispatch, useSelector } from "react-redux";
-import CategoryForm from "../../components/forms/category-form";
+import CategoryForm from "../../../components/forms/categories/category-form";
 
 const CategoryFormContainer = ({ category }) => {
     const [isEditing, setIsEditing] = useState(false);
