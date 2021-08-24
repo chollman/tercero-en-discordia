@@ -10,6 +10,7 @@
     "axios": "^0.21.1",
     "bootstrap": "^5.0.2",
     "final-form": "^4.20.2",
+    "form-data": "^2.3.3",
     "mdb-react-ui-kit": "^1.2.0",
     "node-sass": "^6.0.1",
     "prop-types": "^15.7.2",
