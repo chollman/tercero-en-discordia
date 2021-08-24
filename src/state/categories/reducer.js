@@ -14,7 +14,6 @@ const INITIAL_STATE = {
     isFetching: false,
     errorMessage: "",
     numberOfCats: 0,
-    isEditingOne: false,
 };
 
 function categoriesReducer(state = INITIAL_STATE, action) {
@@ -44,7 +43,6 @@ function categoriesReducer(state = INITIAL_STATE, action) {
         case CATEGORY_EDIT_SUCCESS:
             return {
                 ...state,
-                isEditingOne: false,
                 categoriesArr: state.categoriesArr.map((element) =>
                     element._id === action.payload.catId ? { ...element, ...action.payload.data } : element
                 ),
