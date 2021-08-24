@@ -1,20 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { useDispatch, useSelector } from "react-redux";
-import { handleFetchingCategories } from "../../../../state/categories/actions";
 import Container from "react-bootstrap/Container";
 import Spinner from "react-bootstrap/Spinner";
 import CategoryForm from "./category-form";
 
-const ViewCategories = () => {
-    const categories = useSelector((state) => state.categories);
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(handleFetchingCategories());
-    }, [dispatch]);
-
+const ViewCategories = ({ categories }) => {
     return (
         <div>
             <Row>
