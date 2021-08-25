@@ -1,17 +1,17 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { handleFetchingCategories } from "../../../../../state/categories/actions";
-import ViewCategories from "../../../components/forms/categories/view-categories";
+import ViewAuthors from "../../../components/forms/authors/view-authors";
+import { handleFetchingAuthors } from "../../../../../state/authors/actions";
 
-const ViewCategoriesContainer = () => {
-    const categories = useSelector((state) => state.categories);
+const ViewAuthorsContainer = () => {
+    const authors = useSelector((state) => state.authors);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(handleFetchingCategories());
+        dispatch(handleFetchingAuthors());
     }, [dispatch]);
 
-    return <ViewCategories categories={categories} />;
+    return <ViewAuthors authors={authors} />;
 };
 
-export default ViewCategoriesContainer;
+export default ViewAuthorsContainer;
