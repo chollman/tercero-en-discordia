@@ -56,6 +56,26 @@ body {
         border: 0;
         color: #ffffff;
     }
+
+    .inline-heading {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 10px;
+    }
+
+    .close {
+        padding: 1rem;
+        margin: -1.5rem -1rem -1rem auto;
+        float: right;
+        font-size: 1.5rem;
+        font-weight: 700;
+        line-height: 1;
+        color: #000;
+        text-shadow: 0 1px 0 #fff;
+        opacity: .5;
+        background-color: transparent;
+        border: 0;
+    }
 }
 
 .#{$css-namespace} {

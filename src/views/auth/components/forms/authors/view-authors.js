@@ -3,25 +3,41 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Spinner from "react-bootstrap/Spinner";
-import CategoryForm from "../../../containers/forms/categories/category-form";
+import Author from "../../../containers/forms/authors/author";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import AuthorForm from "./author-form";
 
-const ViewAuthors = ({ categories }) => {
+const ViewAuthors = ({
+    authors,
+    showEditModal,
+    handleCloseEditModal,
+    onCreateAuthorButtonClicked,
+    validate,
+    onSubmit,
+}) => {
     return (
         <div>
             <Row>
                 <Col md={12}>
-                    <h2>Lista de Categorías</h2>
-                    {categories.isFetching ? (
+                    <div>
+                        <h2 className="inline-heading">Lista de Autores</h2>
+                        <Button variant="primary" type="submit" onClick={onCreateAuthorButtonClicked}>
+                            Nuevo Autor
+                        </Button>
+                    </div>
+                    {authors.isFetching ? (
                         renderLoading()
                     ) : (
                         <Col className="result-list" md={12}>
-                            {categories.categoriesArr.map((cat) => {
-                                return <CategoryForm key={cat._id} category={cat} />;
+                            {authors.authorsArr.map((author) => {
+                                return <Author key={author._id} author={author} />;
                             })}
                         </Col>
                     )}
                 </Col>
             </Row>
+            {renderModal(onSubmit, validate, showEditModal, handleCloseEditModal)}
         </div>
     );
 };
@@ -37,6 +53,27 @@ const renderLoading = () => {
                 </Col>
             </Row>
         </Container>
+    );
+};
+
+const renderModal = (onSubmit, validate, showEditModal, handleCloseEditModal) => {
+    return (
+        <Modal size="lg" show={showEditModal} onHide={handleCloseEditModal}>
+            <Modal.Header closeButton>
+                <Modal.Title>Editar autor</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <AuthorForm validate={validate} onSubmit={onSubmit} />
+            </Modal.Body>
+            <Modal.Footer>
+                <Button variant="secondary" onClick={handleCloseEditModal}>
+                    Close
+                </Button>
+                <Button variant="primary" type="submit" form={`author-form`} onClick={handleCloseEditModal}>
+                    Save Changes
+                </Button>
+            </Modal.Footer>
+        </Modal>
     );
 };
 

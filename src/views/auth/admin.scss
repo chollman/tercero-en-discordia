@@ -39,10 +39,14 @@
             opacity: 1;
         }
     }
-    .category-item {
+    .admin-item {
         font-size: 14px;
         border-bottom: 1px solid #cccccc;
         padding: 10px;
+
+        .name {
+            margin-right: 10px;
+        }
 
         .btn {
             margin-right: 10px;
@@ -54,6 +58,24 @@
         margin-top: .25rem;
         font-size: .875em;
         color: #dc3545;
+    }
+
+    .author-image {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 10px;
+    }
+
+    .image-container {
+        display: flex;
+        width: 100px !important;
+        height: 100px !important;
+        border-radius: 50%;
+        text-align: center;
+        overflow: hidden;
+        justify-content: center;
+        align-content: center;
+        border: 4px solid #2F7B8B;
     }
 
 
@@ -70,5 +92,11 @@
             vertical-align: middle;
             margin-right: 10px;
         }
+    }
+}
+
+.modal {
+    .author-image-wrapper {
+        margin-top: 10px;
     }
 }

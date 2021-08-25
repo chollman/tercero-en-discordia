@@ -5,37 +5,12 @@ import FormBootstrap from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Spinner from "react-bootstrap/Spinner";
-import { MDBFile } from "mdb-react-ui-kit";
+import TextAreaAdapter from "../../../../../ui/forms/text-area-adapter";
+import TextFieldValidatedAdapter from "../../../../../ui/forms/text-field-validated-adapter";
+import TextFieldAdapter from "../../../../../ui/forms/text-field-adapter";
+import FileAdapter from "../../../../../ui/forms/file-adapter";
 
 const CreateAuthor = ({ message, validate, onSubmit, isSaving }) => {
-    const TextFieldValidatedAdapter = ({ input, meta, ...rest }) => (
-        <>
-            <FormBootstrap.Control isInvalid={meta.error && meta.touched} isValid={!meta.error} {...input} {...rest} />
-            {meta.error && meta.touched && <div className="error-input">{meta.error}</div>}
-        </>
-    );
-
-    const TextFieldAdapter = ({ input, meta, ...rest }) => (
-        <>
-            <FormBootstrap.Control {...input} {...rest} />
-            {meta.error && meta.touched && <div className="error-input">{meta.error}</div>}
-        </>
-    );
-
-    const TextAreaAdapter = ({ input, meta, ...rest }) => (
-        <>
-            <FormBootstrap.Control as="textarea" {...input} {...rest} />
-            {meta.error && meta.touched && <div className="error-input">{meta.error}</div>}
-        </>
-    );
-
-    const FileAdapter = ({ input, meta, ...rest }) => (
-        <>
-            <MDBFile name={input.name} onChange={({ target }) => input.onChange(target.files[0])} {...rest} />
-            {meta.error && meta.touched && <div className="error-input">{meta.error}</div>}
-        </>
-    );
-
     return (
         <div>
             <Row>

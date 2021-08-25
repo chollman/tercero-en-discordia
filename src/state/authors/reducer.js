@@ -7,6 +7,9 @@ import {
     AUTHOR_DELETE_ERROR,
     AUTHOR_EDIT_SUCCESS,
     AUTHOR_EDIT_ERROR,
+    AUTHOR_CREATE_SUCCESS,
+    AUTHOR_CREATE,
+    AUTHOR_CREATE_ERROR,
 } from "../constants";
 
 const INITIAL_STATE = {
@@ -20,9 +23,11 @@ function authorsReducer(state = INITIAL_STATE, action) {
     switch (action.type) {
         case FETCHING_AUTHORS:
         case AUTHOR_DELETE:
+        case AUTHOR_CREATE:
             return { ...state, isFetching: true };
         case FETCHING_AUTHORS_ERROR:
         case AUTHOR_DELETE_ERROR:
+        case AUTHOR_CREATE_ERROR:
             return { ...state, isFetching: false, errorMessage: action.payload };
         case FETCHING_AUTHORS_SUCCESS:
             return {
@@ -50,6 +55,14 @@ function authorsReducer(state = INITIAL_STATE, action) {
             };
         case AUTHOR_EDIT_ERROR:
             return { ...state, errorMessage: action.payload };
+        case AUTHOR_CREATE_SUCCESS:
+            return {
+                ...state,
+                isFetching: false,
+                authorsArr: [...state.authorsArr, action.payload],
+                numberOfAuthors: state.numberOfAuthors + 1,
+                errorMessage: "",
+            };
         default:
             return state;
     }

@@ -11,7 +11,6 @@ const CreateAuthorContainer = () => {
     const { currentUser, authenticated } = useSelector((state) => state.auth);
 
     const onSubmit = (formProps) => {
-        console.log(formProps);
         setIsSaving(true);
         dispatch(
             authorCreate(currentUser, authenticated, formProps, () => {

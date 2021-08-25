@@ -27,8 +27,11 @@ export const authorCreate = (currentUser, token, formProps, callback) => async (
             },
         });
         dispatch({ type: AUTHOR_CREATE_SUCCESS, payload: response.data });
-        callback();
+        if (callback) {
+            callback();
+        }
     } catch (e) {
+        console.log(e);
         dispatch({ type: AUTHOR_CREATE_ERROR, payload: "Hubo un error al intentar crear el autor." });
     }
 };
@@ -52,22 +55,27 @@ export const authorDelete = (currentUser, token, authorId, callback) => async (d
             },
         });
         dispatch({ type: AUTHOR_DELETE_SUCCESS, payload: { data: response.data, authorId } });
-        callback();
+        if (callback) {
+            callback();
+        }
     } catch (e) {
         dispatch({ type: AUTHOR_DELETE_ERROR, payload: "Hubo un error al intentar eliminar el autor." });
     }
 };
 
 export const authorEdit = (currentUser, token, authorId, formProps, callback) => async (dispatch) => {
+    const form = rawToForm(formProps);
     dispatch({ type: AUTHOR_EDIT });
     try {
-        const response = await axios.put(API_URL + "/authors/" + authorId + "/" + currentUser, formProps, {
+        const response = await axios.put(API_URL + "/authors/" + authorId + "/" + currentUser, form, {
             headers: {
                 authorization: token,
             },
         });
         dispatch({ type: AUTHOR_EDIT_SUCCESS, payload: { data: response.data, authorId } });
-        callback();
+        if (callback) {
+            callback();
+        }
     } catch (e) {
         dispatch({ type: AUTHOR_EDIT_ERROR, payload: "Hubo un error al intentar modificar el autor." });
     }

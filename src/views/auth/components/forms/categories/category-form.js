@@ -19,7 +19,7 @@ const CategoryForm = ({
     const TextFieldAdapter = ({ input, meta, ...rest }) => <FormBootstrap.Control {...input} {...rest} />;
 
     return (
-        <Row className="category-item">
+        <Row className="admin-item">
             <Col md={12}>
                 <Button size="sm" variant="danger" onClick={onDeleteButtonClicked}>
                     <i className="fas fa-trash-alt" />

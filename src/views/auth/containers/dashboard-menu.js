@@ -18,7 +18,9 @@ const DashboardMenu = ({ onCreateCategoryClicked }) => {
                     <Button size="sm" onClick={() => onCreateCategoryClicked(3)}>
                         Crear
                     </Button>
-                    <Button size="sm">Ver/Editar</Button>
+                    <Button size="sm" onClick={() => onCreateCategoryClicked(4)}>
+                        Ver/Editar
+                    </Button>
                 </MDBAccordionItem>
                 <MDBAccordionItem collapseId="accordionCollapse3" headerTitle="Libros">
                     <Button size="sm">Crear</Button>
