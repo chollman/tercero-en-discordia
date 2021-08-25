@@ -7,6 +7,9 @@ import {
     CATEGORY_DELETE_ERROR,
     CATEGORY_EDIT_SUCCESS,
     CATEGORY_EDIT_ERROR,
+    CATEGORY_CREATE_SUCCESS,
+    CATEGORY_CREATE_ERROR,
+    CATEGORY_CREATE,
 } from "../constants";
 
 const INITIAL_STATE = {
@@ -20,9 +23,11 @@ function categoriesReducer(state = INITIAL_STATE, action) {
     switch (action.type) {
         case FETCHING_CATEGORIES:
         case CATEGORY_DELETE:
+        case CATEGORY_CREATE:
             return { ...state, isFetching: true };
         case FETCHING_CATEGORIES_ERROR:
         case CATEGORY_DELETE_ERROR:
+        case CATEGORY_CREATE_ERROR:
             return { ...state, isFetching: false, errorMessage: action.payload };
         case FETCHING_CATEGORIES_SUCCESS:
             return {
@@ -50,6 +55,14 @@ function categoriesReducer(state = INITIAL_STATE, action) {
             };
         case CATEGORY_EDIT_ERROR:
             return { ...state, errorMessage: action.payload };
+        case CATEGORY_CREATE_SUCCESS:
+            return {
+                ...state,
+                isFetching: false,
+                categoriesArr: [...state.categoriesArr, action.payload],
+                numberOfCats: state.numberOfCats + 1,
+                errorMessage: "",
+            };
         default:
             return state;
     }
