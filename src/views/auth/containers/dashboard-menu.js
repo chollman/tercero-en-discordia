@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 const DashboardMenu = ({ onCreateCategoryClicked }) => {
     return (
         <div>
-            <MDBAccordion initialActive="accordionCollapse1">
+            <MDBAccordion initialActive="accordionCollapse2">
                 <MDBAccordionItem collapseId="accordionCollapse1" headerTitle="Categorías">
                     <Button size="sm" onClick={() => onCreateCategoryClicked(1)}>
                         Crear
