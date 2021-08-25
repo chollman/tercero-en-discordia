@@ -49,7 +49,7 @@ const BookDetail = ({ book, isFetching }) => {
                         <Col md={9}>
                             <h1 className="book-title">{book.title}</h1>
                             <h5 className="book-author">
-                                Por <span>{book.author}</span>
+                                Por <span>{book.authors && getAuthors(book.authors)}</span>
                             </h5>
                             {book.numberOfPages && (
                                 <div className="book-pages">
@@ -60,11 +60,16 @@ const BookDetail = ({ book, isFetching }) => {
                             <hr />
                             <div className="book-description">{book.description}</div>
                             <hr />
-                            {book.category && (
-                                <div className="book-category">
-                                    <Button size="sm">{book.category.name}</Button>
-                                </div>
-                            )}
+                            <div className="book-category">
+                                {book.categories &&
+                                    book.categories.map((category) => {
+                                        return (
+                                            <Button key={category.name} size="sm">
+                                                {category.name}
+                                            </Button>
+                                        );
+                                    })}
+                            </div>
                             <Row className="book-data">
                                 {book.isbn && <Col md={6}>ISBN: {book.isbn}</Col>}
                                 {book.publicationDate && <Col md={6}>Publicado: {book.publicationDate}</Col>}
@@ -90,6 +95,18 @@ const renderLoading = () => {
             </Row>
         </Container>
     );
+};
+
+const getAuthors = (authors) => {
+    let buffer = authors[0].name;
+    for (let i = 1; i < authors.length; i++) {
+        if (i === authors.length - 1) {
+            buffer = buffer + " y " + authors[i].name;
+            continue;
+        }
+        buffer = buffer + ", " + authors[i].name;
+    }
+    return buffer;
 };
 
 export default BookDetail;
