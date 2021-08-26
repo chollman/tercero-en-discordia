@@ -63,6 +63,19 @@ body {
         margin-right: 10px;
     }
 
+    .error-input {
+        width: 100%;
+        margin-top: .25rem;
+        font-size: .875em;
+        color: #dc3545;
+    }
+
+    .my-form-group {
+        display: inline-block;
+        vertical-align: top;
+        margin-right: 10px;
+    }
+
     .close {
         padding: 1rem;
         margin: -1.5rem -1rem -1rem auto;

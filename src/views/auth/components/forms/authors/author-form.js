@@ -16,7 +16,7 @@ const AuthorForm = ({ author, validate, onSubmit, formData = {} }) => {
                 ...formData,
             }}
             render={({ handleSubmit }) => (
-                <FormBootstrap id={`author-form`} className="edit-category-form" onSubmit={handleSubmit}>
+                <FormBootstrap id="author-form" className="edit-category-form" onSubmit={handleSubmit}>
                     <FormBootstrap.Group className="mb-3" controlId="formAuthorName">
                         <FormBootstrap.Label>Nombre</FormBootstrap.Label>
                         <Field
