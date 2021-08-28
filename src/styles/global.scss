@@ -83,6 +83,18 @@ body {
         background-color: transparent;
         border: 0;
     }
+
+    .form-row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-right: -5px;
+        margin-left: -5px;
+
+        > .col {
+            padding-right: 5px;
+            padding-left: 5px;
+        }
+    }
 }
 
 .#{$css-namespace} {

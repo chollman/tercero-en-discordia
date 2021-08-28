@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Col";
 import Spinner from "react-bootstrap/Spinner";
 import Image from "react-bootstrap/Image";
 import Modal from "react-bootstrap/Modal";
+import BookForm from "./book-form";
 
 const Book = ({
     book,
@@ -49,18 +50,17 @@ const renderModal = (book, formData, onSubmit, validate, showEditModal, handleCl
     return (
         <Modal size="lg" show={showEditModal} onHide={handleCloseEditModal}>
             <Modal.Header closeButton>
-                <Modal.Title>Editar autor</Modal.Title>
+                <Modal.Title>Editar libro</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                MODAL EDIT FORM
-                {/*<AuthorForm author={author} validate={validate} formData={formData} onSubmit={onSubmit} />*/}
+                <BookForm book={book} validate={validate} formData={formData} onSubmit={onSubmit} />
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={handleCloseEditModal}>
-                    Close
+                    Cancelar
                 </Button>
                 <Button variant="primary" type="submit" form={`book-form`} onClick={handleCloseEditModal}>
-                    Save Changes
+                    Guardar cambios
                 </Button>
             </Modal.Footer>
         </Modal>

@@ -57,10 +57,10 @@ const renderModal = (author, formData, onSubmit, validate, showEditModal, handle
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={handleCloseEditModal}>
-                    Close
+                    Cancelar
                 </Button>
                 <Button variant="primary" type="submit" form={`author-form`} onClick={handleCloseEditModal}>
-                    Save Changes
+                    Guardar cambios
                 </Button>
             </Modal.Footer>
         </Modal>
