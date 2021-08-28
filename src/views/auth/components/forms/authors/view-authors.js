@@ -60,7 +60,7 @@ const renderModal = (onSubmit, validate, showEditModal, handleCloseEditModal) =>
     return (
         <Modal size="lg" show={showEditModal} onHide={handleCloseEditModal}>
             <Modal.Header closeButton>
-                <Modal.Title>Editar autor</Modal.Title>
+                <Modal.Title>Crear autor</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <AuthorForm validate={validate} onSubmit={onSubmit} />
