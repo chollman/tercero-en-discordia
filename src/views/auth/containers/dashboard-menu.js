@@ -10,6 +10,9 @@ const DashboardMenu = ({ onCreateCategoryClicked }) => {
             <Button size="sm" variant="outline-primary" onClick={() => onCreateCategoryClicked(2)} block>
                 Autores
             </Button>
+            <Button size="sm" variant="outline-primary" onClick={() => onCreateCategoryClicked(3)} block>
+                Libros
+            </Button>
         </div>
     );
 };

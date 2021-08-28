@@ -1,6 +1,7 @@
 import React from "react";
 import ViewCategories from "./forms/categories/view-categories";
 import ViewAuthors from "../containers/forms/authors/view-authors";
+import ViewBooks from "../containers/forms/books/view-books";
 
 const DashboardContent = ({ view }) => {
     const selectView = (view) => {
@@ -12,6 +13,9 @@ const DashboardContent = ({ view }) => {
                 break;
             case 2:
                 component = <ViewAuthors />;
+                break;
+            case 3:
+                component = <ViewBooks />;
                 break;
             default:
                 return component;
