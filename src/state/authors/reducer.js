@@ -10,6 +10,9 @@ import {
     AUTHOR_CREATE_SUCCESS,
     AUTHOR_CREATE,
     AUTHOR_CREATE_ERROR,
+    SEARCHING_AUTHORS,
+    SEARCHING_AUTHORS_SUCCESS,
+    SEARCHING_AUTHORS_ERROR,
 } from "../constants";
 
 const INITIAL_STATE = {
@@ -17,6 +20,8 @@ const INITIAL_STATE = {
     isFetching: false,
     errorMessage: "",
     numberOfAuthors: 0,
+    isSearching: false,
+    search: [],
 };
 
 function authorsReducer(state = INITIAL_STATE, action) {
@@ -54,6 +59,7 @@ function authorsReducer(state = INITIAL_STATE, action) {
                 errorMessage: "",
             };
         case AUTHOR_EDIT_ERROR:
+        case SEARCHING_AUTHORS_ERROR:
             return { ...state, errorMessage: action.payload };
         case AUTHOR_CREATE_SUCCESS:
             return {
@@ -61,6 +67,15 @@ function authorsReducer(state = INITIAL_STATE, action) {
                 isFetching: false,
                 authorsArr: [...state.authorsArr, action.payload],
                 numberOfAuthors: state.numberOfAuthors + 1,
+                errorMessage: "",
+            };
+        case SEARCHING_AUTHORS:
+            return { ...state, isSearching: true };
+        case SEARCHING_AUTHORS_SUCCESS:
+            return {
+                ...state,
+                isSearching: false,
+                search: action.payload,
                 errorMessage: "",
             };
         default:

@@ -11,6 +11,9 @@ import {
     AUTHOR_EDIT,
     AUTHOR_EDIT_SUCCESS,
     AUTHOR_EDIT_ERROR,
+    SEARCHING_AUTHORS,
+    SEARCHING_AUTHORS_SUCCESS,
+    SEARCHING_AUTHORS_ERROR,
 } from "../constants";
 import axios from "axios";
 import { rawToForm } from "../../utils/utils";
@@ -78,5 +81,18 @@ export const authorEdit = (currentUser, token, authorId, formProps, callback) =>
         }
     } catch (e) {
         dispatch({ type: AUTHOR_EDIT_ERROR, payload: "Hubo un error al intentar modificar el autor." });
+    }
+};
+
+export const authorSearch = (query, callback) => async (dispatch) => {
+    dispatch({ type: SEARCHING_AUTHORS });
+    try {
+        const response = await axios.get(API_URL + "/authors/search?search=" + query);
+        dispatch({ type: SEARCHING_AUTHORS_SUCCESS, payload: response.data });
+        if (callback) {
+            callback();
+        }
+    } catch (e) {
+        dispatch({ type: SEARCHING_AUTHORS_ERROR, payload: "Hubo un error al intentar buscar autores." });
     }
 };

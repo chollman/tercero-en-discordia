@@ -1,0 +1,14 @@
+@import '../../styles/global-variables';
+
+.#{$css-namespace} .search-complex {
+    .search-box-row {
+        align-items: center;
+    }
+    .my-form-group {
+        margin-right: 0;
+    }
+    .search-box {
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+}
