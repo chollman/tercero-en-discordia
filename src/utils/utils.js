@@ -4,7 +4,13 @@ export const rawToForm = (formProps) => {
     const form = new FormData();
     for (let key in formProps) {
         if (formProps.hasOwnProperty(key)) {
-            form.append(key, formProps[key]);
+            if (Array.isArray(formProps[key])) {
+                for (let i = 0; i < formProps[key].length; i++) {
+                    form.append(`${key}[${i}]`, formProps[key][i]);
+                }
+            } else {
+                form.append(key, formProps[key]);
+            }
         }
     }
     return form;

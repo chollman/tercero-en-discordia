@@ -17,7 +17,6 @@ const BookContainer = ({ book }) => {
         formProps.authors = extractIds(formProps.authors);
         formProps.categories = extractIds(formProps.categories);
 
-        console.log("BOOK SENDING", formProps);
         dispatch(
             bookEdit(currentUser, authenticated, book._id, formProps, () => {
                 setIsSaving(false);
