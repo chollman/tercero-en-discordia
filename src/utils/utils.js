@@ -9,3 +9,11 @@ export const rawToForm = (formProps) => {
     }
     return form;
 };
+
+export const extractIds = (array) => {
+    let resultArr;
+    resultArr = array.map((obj) => {
+        return obj._id;
+    });
+    return resultArr;
+};

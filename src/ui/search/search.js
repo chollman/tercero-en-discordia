@@ -1,32 +1,25 @@
 import React, { useEffect, useRef, useState } from "react";
-import FormBootstrap from "react-bootstrap/Form";
-import { Field, Form } from "react-final-form";
-import TextFieldAdapter from "../forms/text-field-adapter";
 import { authorSearch } from "../../state/authors/actions";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "react-bootstrap/Button";
 import Spinner from "react-bootstrap/Spinner";
-import Col from "react-bootstrap/Col";
 import Overlay from "react-bootstrap/Overlay";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 
 import "./search.scss";
 
-const Search = () => {
+const Search = ({ resultArr = [], onSearchChange, showLabels = false }) => {
     const dispatch = useDispatch();
 
     const [searchTerm, setSearchTerm] = useState("");
-    const [selectedArr, setSelectedArr] = useState([]);
+    const [selectedArr, setSelectedArr] = useState(resultArr);
     const [showTooltip, setShowTooltip] = useState(false);
 
     const searchResults = useSelector((state) => state.authors.search);
     const isSearching = useSelector((state) => state.authors.isSearching);
 
     const tooltipTarget = useRef(null);
-
-    const onSubmit = ({ search }) => {
-        setSearchTerm(search);
-    };
-    const validate = () => {};
 
     const handleChange = (event) => {
         setSearchTerm(event.target.value);
@@ -49,7 +42,7 @@ const Search = () => {
         return () => clearTimeout(timer);
     }, [dispatch, searchTerm]);
 
-    const toggleSelection = (selection, form) => {
+    const toggleSelection = (selection) => {
         let resultArr;
         if (selectedArr.find((elem) => elem._id === selection._id)) {
             resultArr = selectedArr.filter((elem) => elem._id !== selection._id);
@@ -59,13 +52,13 @@ const Search = () => {
         setSelectedArr(resultArr);
         setShowTooltip(false);
         setSearchTerm("");
-        form.reset();
+        onSearchChange(resultArr);
     };
 
-    const showResults = (results, form) => {
+    const showResults = (results) => {
         return results.map((result) => {
             return (
-                <Button onClick={() => toggleSelection(result, form)} key={result._id}>
+                <Button onClick={() => toggleSelection(result)} key={result._id}>
                     {result.name}
                 </Button>
             );
@@ -84,53 +77,31 @@ const Search = () => {
 
     return (
         <div className="search-complex">
-            <Form
-                onSubmit={onSubmit}
-                validate={validate}
-                render={({ handleSubmit, form }) => (
-                    <FormBootstrap id="search-form" onSubmit={handleSubmit}>
-                        <FormBootstrap.Row className="search-box-row mb-3">
-                            <FormBootstrap.Group
-                                as={Col}
-                                md="auto"
-                                className="search-box"
-                                controlId="formSearchBox"
-                                ref={tooltipTarget}
-                            >
-                                <Field
-                                    name="search"
-                                    component={TextFieldAdapter}
-                                    type="text"
-                                    inputOnChange={handleChange}
-                                    placeholder="Buscar un autor"
-                                />
-                            </FormBootstrap.Group>
-                            {isSearching && (
-                                <Spinner animation="border" role="status">
-                                    <span className="visually-hidden">Cargando...</span>
-                                </Spinner>
-                            )}
-                        </FormBootstrap.Row>
-                        <Overlay target={tooltipTarget.current} show={showTooltip} placement="right">
-                            {({ placement, arrowProps, show: _show, popper, ...props }) => (
-                                <div
-                                    {...props}
-                                    style={{
-                                        backgroundColor: "rgba(255, 100, 100, 0.85)",
-                                        padding: "2px 10px",
-                                        color: "white",
-                                        borderRadius: 3,
-                                        ...props.style,
-                                    }}
-                                >
-                                    {showResults(searchResults, form)}
-                                </div>
-                            )}
-                        </Overlay>
-                    </FormBootstrap>
+            <Row className="search-box-row mb-1">
+                <Col md="auto">
+                    <input
+                        className="form-control"
+                        type="text"
+                        value={searchTerm}
+                        onChange={handleChange}
+                        placeholder="Buscar autor"
+                        ref={tooltipTarget}
+                    />
+                </Col>
+                {isSearching && (
+                    <Spinner animation="border" role="status">
+                        <span className="visually-hidden">Cargando...</span>
+                    </Spinner>
                 )}
-            />
-            {showSelection()}
+            </Row>
+            <Overlay target={tooltipTarget.current} show={showTooltip} placement="right">
+                {({ placement, arrowProps, show: _show, popper, ...props }) => (
+                    <div className="magic-tooltip" {...props}>
+                        {showResults(searchResults)}
+                    </div>
+                )}
+            </Overlay>
+            {showLabels && showSelection()}
         </div>
     );
 };

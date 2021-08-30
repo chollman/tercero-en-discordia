@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import FormBootstrap from "react-bootstrap/Form";
 import { Field, Form } from "react-final-form";
 import TextFieldValidatedAdapter from "../../../../../ui/forms/text-field-validated-adapter";
@@ -10,8 +10,23 @@ import TextFieldAdapter from "../../../../../ui/forms/text-field-adapter";
 import arrayMutators from "final-form-arrays";
 import { FieldArray } from "react-final-form-arrays";
 import Button from "react-bootstrap/Button";
+import Search from "../../../../../ui/search/search";
+import { changeAuthors } from "../../../../../state/books/actions";
+import { useDispatch, useSelector } from "react-redux";
 
-const BookForm = ({ book, validate, onSubmit, formData = {} }) => {
+const BookForm = ({ book, validate, onSubmit }) => {
+    const dispatch = useDispatch();
+
+    const [showSearchBox, setShowSearchBox] = useState(false);
+
+    const currentBook = useSelector((state) => state.books.currentBook);
+
+    const [authors, setAuthors] = useState(book.authors);
+    const onSearchAuthorsChange = (authors) => {
+        setAuthors(authors);
+        dispatch(changeAuthors(authors));
+        setShowSearchBox(false);
+    };
     return (
         <Form
             onSubmit={onSubmit}
@@ -20,7 +35,7 @@ const BookForm = ({ book, validate, onSubmit, formData = {} }) => {
                 ...arrayMutators,
             }}
             initialValues={{
-                ...formData,
+                ...currentBook,
             }}
             render={({
                 handleSubmit,
@@ -76,7 +91,12 @@ const BookForm = ({ book, validate, onSubmit, formData = {} }) => {
                                     })
                                 }
                             </FieldArray>
-                            <Button variant="primary" onClick={() => push("authors", undefined)}>
+                            {showSearchBox && <Search resultArr={authors} onSearchChange={onSearchAuthorsChange} />}
+
+                            {/*<Button variant="primary" onClick={() => push("authors", undefined)}>*/}
+                            {/*    Agregar autor*/}
+                            {/*</Button>*/}
+                            <Button variant="primary" onClick={() => setShowSearchBox(true)}>
                                 Agregar autor
                             </Button>
                         </FormBootstrap.Group>

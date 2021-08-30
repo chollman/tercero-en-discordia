@@ -84,6 +84,17 @@ body {
         border: 0;
     }
 
+    .magic-tooltip {
+        z-index: 1100;
+        background-color: #cccccc;
+        max-width: 50%;
+        @include border-radius(5px);
+        button {
+            background-color: transparent;
+            border: none;
+        }
+    }
+
     .form-row {
         display: flex;
         flex-wrap: wrap;

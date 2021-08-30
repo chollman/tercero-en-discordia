@@ -69,7 +69,7 @@ const renderModal = (onSubmit, validate, showEditModal, handleCloseEditModal) =>
                 <Button variant="secondary" onClick={handleCloseEditModal}>
                     Cerrar
                 </Button>
-                <Button variant="primary" type="submit" form={`author-form`} onClick={handleCloseEditModal}>
+                <Button variant="primary" type="submit" form="author-form" onClick={handleCloseEditModal}>
                     Crear autor
                 </Button>
             </Modal.Footer>
