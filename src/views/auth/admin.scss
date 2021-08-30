@@ -83,7 +83,6 @@
         margin-right: 10px;
     }
 
-
     // EDIT CATEGORY
     .edit-category-form {
         display: inline-block;
@@ -103,5 +102,11 @@
 .modal {
     .author-image-wrapper {
         margin-top: 10px;
+    }
+    .search-wrapper {
+        padding-left: 0;
+    }
+    .search-wrapper-close {
+        padding-right: 5px;
     }
 }

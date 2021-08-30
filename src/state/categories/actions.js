@@ -11,6 +11,9 @@ import {
     CATEGORY_EDIT,
     CATEGORY_EDIT_SUCCESS,
     CATEGORY_EDIT_ERROR,
+    SEARCHING_CATEGORIES,
+    SEARCHING_CATEGORIES_SUCCESS,
+    SEARCHING_CATEGORIES_ERROR,
 } from "../constants";
 import axios from "axios";
 
@@ -74,5 +77,18 @@ export const categoryEdit = (currentUser, token, catId, formProps, callback) => 
         }
     } catch (e) {
         dispatch({ type: CATEGORY_EDIT_ERROR, payload: "Hubo un error al intentar modificar la categoría." });
+    }
+};
+
+export const categoriesSearch = (query, callback) => async (dispatch) => {
+    dispatch({ type: SEARCHING_CATEGORIES });
+    try {
+        const response = await axios.get(API_URL + "/categories/search?search=" + query);
+        dispatch({ type: SEARCHING_CATEGORIES_SUCCESS, payload: response.data });
+        if (callback) {
+            callback();
+        }
+    } catch (e) {
+        dispatch({ type: SEARCHING_CATEGORIES_ERROR, payload: "Hubo un error al intentar buscar categorías." });
     }
 };

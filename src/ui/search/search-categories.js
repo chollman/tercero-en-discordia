@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { authorSearch } from "../../state/authors/actions";
+import { categoriesSearch } from "../../state/categories/actions";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "react-bootstrap/Button";
 import Spinner from "react-bootstrap/Spinner";
@@ -9,15 +9,15 @@ import Row from "react-bootstrap/Row";
 
 import "./search.scss";
 
-const Search = ({ resultArr = [], onSearchChange, showLabels = false }) => {
+const SearchCategories = ({ resultArr = [], onSearchChange, showLabels = false }) => {
     const dispatch = useDispatch();
 
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedArr, setSelectedArr] = useState(resultArr);
     const [showTooltip, setShowTooltip] = useState(false);
 
-    const searchResults = useSelector((state) => state.authors.search);
-    const isSearching = useSelector((state) => state.authors.isSearching);
+    const searchResults = useSelector((state) => state.categories.search);
+    const isSearching = useSelector((state) => state.categories.isSearching);
 
     const tooltipTarget = useRef(null);
 
@@ -31,7 +31,7 @@ const Search = ({ resultArr = [], onSearchChange, showLabels = false }) => {
             timer = setTimeout(
                 () =>
                     dispatch(
-                        authorSearch(searchTerm, () => {
+                        categoriesSearch(searchTerm, () => {
                             setShowTooltip(true);
                         })
                     ),
@@ -84,7 +84,7 @@ const Search = ({ resultArr = [], onSearchChange, showLabels = false }) => {
                         type="text"
                         value={searchTerm}
                         onChange={handleChange}
-                        placeholder="Buscar autor"
+                        placeholder="Buscar categoría"
                         ref={tooltipTarget}
                     />
                 </Col>
@@ -94,7 +94,7 @@ const Search = ({ resultArr = [], onSearchChange, showLabels = false }) => {
                     </Spinner>
                 )}
             </Row>
-            <Overlay target={tooltipTarget.current} show={showTooltip} placement="right">
+            <Overlay target={tooltipTarget.current} show={showTooltip} placement="bottom">
                 {({ placement, arrowProps, show: _show, popper, ...props }) => (
                     <div className="magic-tooltip" {...props}>
                         {showResults(searchResults)}
@@ -106,4 +106,4 @@ const Search = ({ resultArr = [], onSearchChange, showLabels = false }) => {
     );
 };
 
-export default Search;
+export default SearchCategories;

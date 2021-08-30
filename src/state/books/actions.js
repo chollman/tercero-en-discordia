@@ -5,7 +5,6 @@ import {
     FETCHING_BOOK,
     FETCHING_BOOK_SUCCESS,
     FETCHING_BOOK_ERROR,
-    CHANGE_AUTHORS,
     SELECT_BOOK,
     BOOK_EDIT,
     BOOK_EDIT_SUCCESS,
@@ -38,10 +37,6 @@ export const handleFetchingBook = (bookId) => async (dispatch) => {
 
 export const selectBook = (book) => {
     return { type: SELECT_BOOK, book };
-};
-
-export const changeAuthors = (authors) => {
-    return { type: CHANGE_AUTHORS, authors };
 };
 
 export const bookEdit = (currentUser, token, bookId, formProps, callback) => async (dispatch) => {

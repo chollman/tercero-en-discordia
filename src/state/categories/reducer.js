@@ -10,6 +10,9 @@ import {
     CATEGORY_CREATE_SUCCESS,
     CATEGORY_CREATE_ERROR,
     CATEGORY_CREATE,
+    SEARCHING_CATEGORIES,
+    SEARCHING_CATEGORIES_ERROR,
+    SEARCHING_CATEGORIES_SUCCESS,
 } from "../constants";
 
 const INITIAL_STATE = {
@@ -17,6 +20,8 @@ const INITIAL_STATE = {
     isFetching: false,
     errorMessage: "",
     numberOfCats: 0,
+    isSearching: false,
+    search: [],
 };
 
 function categoriesReducer(state = INITIAL_STATE, action) {
@@ -54,6 +59,7 @@ function categoriesReducer(state = INITIAL_STATE, action) {
                 errorMessage: "",
             };
         case CATEGORY_EDIT_ERROR:
+        case SEARCHING_CATEGORIES_ERROR:
             return { ...state, errorMessage: action.payload };
         case CATEGORY_CREATE_SUCCESS:
             return {
@@ -61,6 +67,15 @@ function categoriesReducer(state = INITIAL_STATE, action) {
                 isFetching: false,
                 categoriesArr: [...state.categoriesArr, action.payload],
                 numberOfCats: state.numberOfCats + 1,
+                errorMessage: "",
+            };
+        case SEARCHING_CATEGORIES:
+            return { ...state, isSearching: true };
+        case SEARCHING_CATEGORIES_SUCCESS:
+            return {
+                ...state,
+                isSearching: false,
+                search: action.payload,
                 errorMessage: "",
             };
         default:

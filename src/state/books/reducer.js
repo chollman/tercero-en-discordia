@@ -5,7 +5,6 @@ import {
     FETCHING_BOOK,
     FETCHING_BOOK_ERROR,
     FETCHING_BOOK_SUCCESS,
-    CHANGE_AUTHORS,
     SELECT_BOOK,
     BOOK_EDIT_SUCCESS,
     BOOK_EDIT_ERROR,
@@ -47,11 +46,6 @@ function booksReducer(state = INITIAL_STATE, action) {
             return { ...state, isFetching: false, errorMessage: action.payload };
         case SELECT_BOOK:
             return { ...state, currentBook: action.book };
-        case CHANGE_AUTHORS:
-            return {
-                ...state,
-                currentBook: { ...state.currentBook, authors: action.authors },
-            };
         case BOOK_EDIT_SUCCESS:
             return {
                 ...state,

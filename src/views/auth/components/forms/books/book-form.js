@@ -10,22 +10,27 @@ import TextFieldAdapter from "../../../../../ui/forms/text-field-adapter";
 import arrayMutators from "final-form-arrays";
 import { FieldArray } from "react-final-form-arrays";
 import Button from "react-bootstrap/Button";
-import Search from "../../../../../ui/search/search";
-import { changeAuthors } from "../../../../../state/books/actions";
-import { useDispatch, useSelector } from "react-redux";
+import SearchAuthors from "../../../../../ui/search/search-authors";
+import SearchCategories from "../../../../../ui/search/search-categories";
+import Row from "react-bootstrap/Row";
 
-const BookForm = ({ book, validate, onSubmit }) => {
-    const dispatch = useDispatch();
+const BookForm = ({ book, validate, onSubmit, formData }) => {
+    const [showSearchAuthorsBox, setShowSearchAuthorsBox] = useState(false);
+    const [showSearchCategoriesBox, setShowSearchCategoriesBox] = useState(false);
 
-    const [showSearchBox, setShowSearchBox] = useState(false);
-
-    const currentBook = useSelector((state) => state.books.currentBook);
-
-    const [authors, setAuthors] = useState(book.authors);
-    const onSearchAuthorsChange = (authors) => {
-        setAuthors(authors);
-        dispatch(changeAuthors(authors));
-        setShowSearchBox(false);
+    const onSearchAuthorsChange = (form) => (authors) => {
+        setShowSearchAuthorsBox(false);
+        form.change("authors", authors);
+    };
+    const addAuthor = () => {
+        setShowSearchAuthorsBox(true);
+    };
+    const onSearchCategoriesChange = (form) => (categories) => {
+        setShowSearchCategoriesBox(false);
+        form.change("categories", categories);
+    };
+    const addCategory = () => {
+        setShowSearchCategoriesBox(true);
     };
     return (
         <Form
@@ -35,14 +40,9 @@ const BookForm = ({ book, validate, onSubmit }) => {
                 ...arrayMutators,
             }}
             initialValues={{
-                ...currentBook,
+                ...formData,
             }}
-            render={({
-                handleSubmit,
-                form: {
-                    mutators: { push },
-                },
-            }) => (
+            render={({ handleSubmit, form, values }) => (
                 <FormBootstrap id="book-form" className="edit-category-form" onSubmit={handleSubmit}>
                     <FormBootstrap.Group className="mb-3" controlId="formBookTitle">
                         <FormBootstrap.Label>Título</FormBootstrap.Label>
@@ -69,34 +69,34 @@ const BookForm = ({ book, validate, onSubmit }) => {
                                 {({ fields }) =>
                                     fields.map((author, index) => {
                                         return (
-                                            <FormBootstrap.Row key={`${author}._id`}>
-                                                <Col className="mb-1">
-                                                    <Field
-                                                        name={`${author}.name`}
-                                                        type="text"
-                                                        component={TextFieldAdapter}
-                                                        placeholder="Buscar autor"
-                                                    />
-                                                </Col>
-                                                <Col className="mb-1" md="auto">
-                                                    <Button
-                                                        variant="outline-secondary"
-                                                        onClick={() => fields.remove(index)}
-                                                    >
-                                                        <i className="fas fa-times" />
-                                                    </Button>
-                                                </Col>
-                                            </FormBootstrap.Row>
+                                            <AuthorRow
+                                                author={author}
+                                                key={`${author}._id`}
+                                                onClick={() => fields.remove(index)}
+                                            />
                                         );
                                     })
                                 }
                             </FieldArray>
-                            {showSearchBox && <Search resultArr={authors} onSearchChange={onSearchAuthorsChange} />}
-
-                            {/*<Button variant="primary" onClick={() => push("authors", undefined)}>*/}
-                            {/*    Agregar autor*/}
-                            {/*</Button>*/}
-                            <Button variant="primary" onClick={() => setShowSearchBox(true)}>
+                            {showSearchAuthorsBox && (
+                                <Row>
+                                    <Col className="search-wrapper-close mb-1" md="auto">
+                                        <Button
+                                            variant="outline-secondary"
+                                            onClick={() => setShowSearchAuthorsBox(false)}
+                                        >
+                                            <i className="fas fa-times" />
+                                        </Button>
+                                    </Col>
+                                    <Col className="search-wrapper">
+                                        <SearchAuthors
+                                            resultArr={values.authors}
+                                            onSearchChange={onSearchAuthorsChange(form)}
+                                        />
+                                    </Col>
+                                </Row>
+                            )}
+                            <Button variant="primary" onClick={addAuthor}>
                                 Agregar autor
                             </Button>
                         </FormBootstrap.Group>
@@ -156,7 +156,25 @@ const BookForm = ({ book, validate, onSubmit }) => {
                                     })
                                 }
                             </FieldArray>
-                            <Button variant="primary" onClick={() => push("categories", undefined)}>
+                            {showSearchCategoriesBox && (
+                                <Row>
+                                    <Col className="search-wrapper-close mb-1" md="auto">
+                                        <Button
+                                            variant="outline-secondary"
+                                            onClick={() => setShowSearchCategoriesBox(false)}
+                                        >
+                                            <i className="fas fa-times" />
+                                        </Button>
+                                    </Col>
+                                    <Col className="search-wrapper">
+                                        <SearchCategories
+                                            resultArr={values.categories}
+                                            onSearchChange={onSearchCategoriesChange(form)}
+                                        />
+                                    </Col>
+                                </Row>
+                            )}
+                            <Button variant="primary" onClick={addCategory}>
                                 Agregar categoría
                             </Button>
                         </FormBootstrap.Group>
@@ -217,6 +235,21 @@ const BookForm = ({ book, validate, onSubmit }) => {
                 </FormBootstrap>
             )}
         />
+    );
+};
+
+const AuthorRow = ({ author, onClick }) => {
+    return (
+        <FormBootstrap.Row>
+            <Col className="mb-1">
+                <Field name={`${author}.name`} type="text" component={TextFieldAdapter} placeholder="Buscar autor" />
+            </Col>
+            <Col className="mb-1" md="auto">
+                <Button variant="outline-secondary" onClick={onClick}>
+                    <i className="fas fa-times" />
+                </Button>
+            </Col>
+        </FormBootstrap.Row>
     );
 };
 

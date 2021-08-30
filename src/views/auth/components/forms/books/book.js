@@ -14,6 +14,7 @@ const Book = ({
     isSaving,
     onSubmit,
     validate,
+    formData,
     showEditModal,
     handleCloseEditModal,
 }) => {
@@ -40,25 +41,25 @@ const Book = ({
                     </Spinner>
                 )}
             </Col>
-            {renderModal(book, onSubmit, validate, showEditModal, handleCloseEditModal)}
+            {renderModal(book, onSubmit, formData, validate, showEditModal, handleCloseEditModal)}
         </Row>
     );
 };
 
-const renderModal = (book, onSubmit, validate, showEditModal, handleCloseEditModal) => {
+const renderModal = (book, onSubmit, formData, validate, showEditModal, handleCloseEditModal) => {
     return (
         <Modal size="lg" show={showEditModal} onHide={handleCloseEditModal}>
             <Modal.Header closeButton>
                 <Modal.Title>Editar libro</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <BookForm book={book} validate={validate} onSubmit={onSubmit} />
+                <BookForm book={book} formData={formData} validate={validate} onSubmit={onSubmit} />
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={handleCloseEditModal}>
                     Cancelar
                 </Button>
-                <Button variant="primary" type="submit" form="book-form">
+                <Button variant="primary" type="submit" form="book-form" onClick={handleCloseEditModal}>
                     Guardar cambios
                 </Button>
             </Modal.Footer>
