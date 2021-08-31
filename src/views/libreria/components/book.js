@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
 import ReactPlaceholder from "react-placeholder";
-//import Image from "react-bootstrap/Image";
 import { LinkContainer } from "react-router-bootstrap";
 import ImageLoader from "../../../ui/imageLoader";
 

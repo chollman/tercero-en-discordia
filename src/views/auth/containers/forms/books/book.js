@@ -48,7 +48,6 @@ const BookContainer = ({ book }) => {
     };
 
     const handleCloseEditModal = () => {
-        console.log("CERRRAR");
         setShowEditModal(false);
     };
 

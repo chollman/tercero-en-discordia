@@ -34,7 +34,6 @@ export const authorCreate = (currentUser, token, formProps, callback) => async (
             callback();
         }
     } catch (e) {
-        console.log(e);
         dispatch({ type: AUTHOR_CREATE_ERROR, payload: "Hubo un error al intentar crear el autor." });
     }
 };

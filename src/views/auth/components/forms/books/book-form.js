@@ -18,8 +18,6 @@ const BookForm = ({ book, validate, onSubmit, formData }) => {
     const [showSearchAuthorsBox, setShowSearchAuthorsBox] = useState(false);
     const [showSearchCategoriesBox, setShowSearchCategoriesBox] = useState(false);
 
-    console.log(formData);
-
     const onSearchAuthorsChange = (form) => (authors) => {
         setShowSearchAuthorsBox(false);
         form.change("authors", authors);

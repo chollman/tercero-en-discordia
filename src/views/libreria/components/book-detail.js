@@ -12,7 +12,7 @@ import ImageLoader from "../../../ui/imageLoader";
 
 const BookDetail = ({ book, isFetching }) => {
     const [show, setShow] = useState(false);
-    console.log(book);
+
     return (
         <div>
             <HeaderBar title="Librería" link="libreria" />
@@ -54,7 +54,7 @@ const BookDetail = ({ book, isFetching }) => {
                             </h5>
                             {book.numberOfPages && (
                                 <div className="book-pages">
-                                    <i className="far fa-copy"></i>
+                                    <i className="far fa-copy" />
                                     {book.numberOfPages} páginas
                                 </div>
                             )}
@@ -99,7 +99,6 @@ const renderLoading = () => {
 };
 
 const getAuthors = (authors) => {
-    console.log("AUTHORS", authors);
     let buffer = authors[0].name;
     for (let i = 1; i < authors.length; i++) {
         if (i === authors.length - 1) {
