@@ -9,19 +9,7 @@ const BookContainer = ({ book }) => {
 
     const [isSaving, setIsSaving] = useState(false);
     const [showEditModal, setShowEditModal] = useState(false);
-    let [formData, setFormData] = useState({
-        title: "",
-        description: "",
-        authors: [],
-        isbn: "",
-        numberOfPages: 0,
-        publicationDate: null,
-        categories: [],
-        linkToEbook: "",
-        linkToPaperBook: "",
-        hasCoverImage: false,
-        hasBackCoverImage: false,
-    });
+    let [formData, setFormData] = useState({});
 
     const { currentUser, authenticated } = useSelector((state) => state.auth);
 
@@ -55,19 +43,7 @@ const BookContainer = ({ book }) => {
 
     const onEditButtonClicked = (book) => {
         dispatch(selectBook(book));
-        setFormData({
-            title: book.title,
-            description: book.description,
-            authors: book.authors,
-            isbn: book.isbn,
-            numberOfPages: book.numberOfPages,
-            publicationDate: book.publicationDate,
-            categories: book.categories,
-            linkToEbook: book.linkToEbook,
-            linkToPaperBook: book.linkToPaperBook,
-            hasCoverImage: book.hasCoverImage,
-            hasBackCoverImage: book.hasBackCoverImage,
-        });
+        setFormData(book);
         setShowEditModal(true);
     };
 
