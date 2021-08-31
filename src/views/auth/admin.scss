@@ -3,11 +3,10 @@
 .#{$css-namespace} .dashboard {
     border-top: 1px solid #dddddd;
     .dashboard-menu {
-        display: flow;
-        height: calc(100vh - 85px);
+        min-height: calc(100vh - 85px);
         background-color: #eeeeee;
         border-right: 1px solid #dddddd;
-        padding-top: 10px;
+        padding: 10px;
         text-align: center;
 
         .accordion {
@@ -95,6 +94,12 @@
             border-radius: .2rem;
             vertical-align: middle;
             margin-right: 10px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .dashboard-menu {
+            min-height: auto;
         }
     }
 }
