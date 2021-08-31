@@ -21,7 +21,12 @@ export const logout = (callback) => {
     callback();
     return {
         type: AUTH_USER,
-        payload: "",
+        payload: {
+            token: "",
+            user: {
+                _id: "",
+            },
+        },
     };
 };
 
