@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Book from "../../../components/forms/books/book";
 import { useDispatch, useSelector } from "react-redux";
-import { bookEdit, selectBook } from "../../../../../state/books/actions";
+import { bookDelete, bookEdit, selectBook } from "../../../../../state/books/actions";
 import { extractIds } from "../../../../../utils/utils";
 
 const BookContainer = ({ book }) => {
@@ -38,7 +38,7 @@ const BookContainer = ({ book }) => {
     };
 
     const onDeleteButtonClicked = (book) => {
-        //dispatch(authorDelete(currentUser, authenticated, book._id));
+        dispatch(bookDelete(currentUser, authenticated, book._id));
     };
 
     const onEditButtonClicked = (book) => {

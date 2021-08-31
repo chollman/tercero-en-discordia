@@ -8,6 +8,12 @@ import {
     SELECT_BOOK,
     BOOK_EDIT_SUCCESS,
     BOOK_EDIT_ERROR,
+    BOOK_DELETE,
+    BOOK_DELETE_ERROR,
+    BOOK_DELETE_SUCCESS,
+    BOOK_CREATE_SUCCESS,
+    BOOK_CREATE_ERROR,
+    BOOK_CREATE,
 } from "../constants";
 
 const INITIAL_STATE = {
@@ -21,6 +27,8 @@ const INITIAL_STATE = {
 function booksReducer(state = INITIAL_STATE, action) {
     switch (action.type) {
         case FETCHING_BOOKS:
+        case BOOK_DELETE:
+        case BOOK_CREATE:
             return { ...state, isFetching: true };
         case FETCHING_BOOKS_SUCCESS:
             return {
@@ -32,6 +40,8 @@ function booksReducer(state = INITIAL_STATE, action) {
                 errorMessage: "",
             };
         case FETCHING_BOOKS_ERROR:
+        case BOOK_DELETE_ERROR:
+        case BOOK_CREATE_ERROR:
             return { ...state, isFetching: false, errorMessage: action.payload };
         case FETCHING_BOOK:
             return { ...state, isFetching: true };
@@ -56,6 +66,23 @@ function booksReducer(state = INITIAL_STATE, action) {
             };
         case BOOK_EDIT_ERROR:
             return { ...state, errorMessage: action.payload };
+        case BOOK_DELETE_SUCCESS:
+            return {
+                ...state,
+                isFetching: false,
+                booksArr: state.booksArr.filter((element) => element._id !== action.payload.bookId),
+                numberOfBooks: state.numberOfBooks - 1,
+                errorMessage: "",
+                currentBook: {},
+            };
+        case BOOK_CREATE_SUCCESS:
+            return {
+                ...state,
+                isFetching: false,
+                booksArr: [...state.booksArr, action.payload],
+                numberOfBooks: state.numberOfBooks + 1,
+                errorMessage: "",
+            };
         default:
             return state;
     }

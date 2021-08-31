@@ -9,6 +9,9 @@ import {
     BOOK_EDIT,
     BOOK_EDIT_SUCCESS,
     BOOK_EDIT_ERROR,
+    BOOK_DELETE,
+    BOOK_DELETE_SUCCESS,
+    BOOK_DELETE_ERROR,
 } from "../constants";
 import axios from "axios";
 import { rawToForm } from "../../utils/utils";
@@ -37,6 +40,23 @@ export const handleFetchingBook = (bookId) => async (dispatch) => {
 
 export const selectBook = (book) => {
     return { type: SELECT_BOOK, book };
+};
+
+export const bookDelete = (currentUser, token, bookId, callback) => async (dispatch) => {
+    dispatch({ type: BOOK_DELETE });
+    try {
+        const response = await axios.delete(API_URL + "/books/" + bookId + "/" + currentUser, {
+            headers: {
+                authorization: token,
+            },
+        });
+        dispatch({ type: BOOK_DELETE_SUCCESS, payload: { data: response.data, bookId } });
+        if (callback) {
+            callback();
+        }
+    } catch (e) {
+        dispatch({ type: BOOK_DELETE_ERROR, payload: "Hubo un error al intentar eliminar el libro." });
+    }
 };
 
 export const bookEdit = (currentUser, token, bookId, formProps, callback) => async (dispatch) => {
