@@ -15,7 +15,7 @@ const AuthorForm = ({ author, validate, onSubmit, formData = {} }) => {
             initialValues={{
                 ...formData,
             }}
-            render={({ handleSubmit }) => (
+            render={({ handleSubmit, submitError }) => (
                 <FormBootstrap id="author-form" className="edit-category-form" onSubmit={handleSubmit}>
                     <FormBootstrap.Group className="mb-3" controlId="formAuthorName">
                         <FormBootstrap.Label>Nombre</FormBootstrap.Label>
@@ -78,6 +78,7 @@ const AuthorForm = ({ author, validate, onSubmit, formData = {} }) => {
                             placeholder="Link de Facebook"
                         />
                     </FormBootstrap.Group>
+                    {submitError && <div className="error-input">{submitError}</div>}
                 </FormBootstrap>
             )}
         />

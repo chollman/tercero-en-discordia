@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Author from "../../../components/forms/authors/author";
 import { authorDelete, authorEdit } from "../../../../../state/authors/actions";
 import { useDispatch, useSelector } from "react-redux";
+import { FORM_ERROR } from "final-form";
 
 const AuthorContainer = ({ author }) => {
     const dispatch = useDispatch();
@@ -18,8 +19,13 @@ const AuthorContainer = ({ author }) => {
 
     const { currentUser, authenticated } = useSelector((state) => state.auth);
 
-    const onSubmit = (formProps) => {
+    const onSubmit = (formProps, formApi) => {
         setIsSaving(true);
+
+        if (formApi.getState().pristine) {
+            return { [FORM_ERROR]: "Debe modificar al menos algún campo para editar el libro." };
+        }
+
         dispatch(
             authorEdit(currentUser, authenticated, author._id, formProps, () => {
                 setIsSaving(false);
