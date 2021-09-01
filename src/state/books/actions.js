@@ -15,6 +15,9 @@ import {
     BOOK_CREATE,
     BOOK_CREATE_SUCCESS,
     BOOK_CREATE_ERROR,
+    FETCHING_BOOK_CATEGORIES,
+    FETCHING_BOOK_CATEGORIES_ERROR,
+    FETCHING_BOOK_CATEGORIES_SUCCESS,
 } from "../constants";
 import axios from "axios";
 import { rawToForm } from "../../utils/utils";
@@ -95,5 +98,18 @@ export const bookCreate = (currentUser, token, formProps, callback) => async (di
         }
     } catch (e) {
         dispatch({ type: BOOK_CREATE_ERROR, payload: "Hubo un error al intentar crear el libro." });
+    }
+};
+
+export const handleFetchingBooksCategories = () => async (dispatch) => {
+    dispatch({ type: FETCHING_BOOK_CATEGORIES });
+    try {
+        const response = await axios.get(API_URL + "/books/categories");
+        dispatch({ type: FETCHING_BOOK_CATEGORIES_SUCCESS, payload: response.data });
+    } catch (e) {
+        dispatch({
+            type: FETCHING_BOOK_CATEGORIES_ERROR,
+            payload: "Hubo un error al intentar actualizar la lista de categorías de libros.",
+        });
     }
 };

@@ -21,13 +21,22 @@ const Libreria = ({ books }) => {
             ) : (
                 <Container>
                     <Row>
-                        {books.booksArr.map((book) => {
-                            return (
-                                <Col md={3} key={book._id}>
-                                    <Book book={book} />
-                                </Col>
-                            );
-                        })}
+                        <Col md={2}>
+                            {books.categoriesInUse.map((cat) => {
+                                return <div key={cat._id}>{cat.name}</div>;
+                            })}
+                        </Col>
+                        <Col md={10}>
+                            <Row>
+                                {books.booksArr.map((book) => {
+                                    return (
+                                        <Col md={3} key={book._id}>
+                                            <Book book={book} />
+                                        </Col>
+                                    );
+                                })}
+                            </Row>
+                        </Col>
                     </Row>
                 </Container>
             )}
