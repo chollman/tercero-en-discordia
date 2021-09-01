@@ -58,6 +58,8 @@ const AuthorContainer = ({ author }) => {
         setShowEditModal(false);
     };
 
+    const imageHash = Date.now();
+
     return (
         <Author
             author={author}
@@ -69,6 +71,7 @@ const AuthorContainer = ({ author }) => {
             validate={validate}
             showEditModal={showEditModal}
             handleCloseEditModal={handleCloseEditModal}
+            imageHash={imageHash}
         />
     );
 };

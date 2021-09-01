@@ -17,6 +17,7 @@ const Author = ({
     validate,
     showEditModal,
     handleCloseEditModal,
+    imageHash,
 }) => {
     return (
         <Row className="admin-item">
@@ -30,7 +31,10 @@ const Author = ({
                 {author.hasPhoto && (
                     <span className="author-image">
                         <span className="image-container">
-                            <Image src={`${process.env.REACT_APP_API_URL}/authors/photo/${author._id}`} height={100} />
+                            <Image
+                                src={`${process.env.REACT_APP_API_URL}/authors/photo/${author._id}?hash=${imageHash}`}
+                                height={100}
+                            />
                         </span>
                     </span>
                 )}

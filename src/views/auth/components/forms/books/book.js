@@ -32,7 +32,7 @@ const Book = ({
                     <span className="book-image">
                         <span className="image-container">
                             <Image
-                                src={`${process.env.REACT_APP_API_URL}/books/cover/${book._id}?${imageHash}`}
+                                src={`${process.env.REACT_APP_API_URL}/books/cover/${book._id}?hash=${imageHash}`}
                                 height={100}
                             />
                         </span>
