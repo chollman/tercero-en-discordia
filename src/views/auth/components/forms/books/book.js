@@ -59,7 +59,7 @@ const renderModal = (book, onSubmit, formData, validate, showEditModal, handleCl
                 <Button variant="secondary" onClick={handleCloseEditModal}>
                     Cancelar
                 </Button>
-                <Button variant="primary" type="submit" form="book-form" onClick={handleCloseEditModal}>
+                <Button variant="primary" type="submit" form="book-form">
                     Guardar cambios
                 </Button>
             </Modal.Footer>

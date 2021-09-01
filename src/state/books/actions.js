@@ -12,6 +12,9 @@ import {
     BOOK_DELETE,
     BOOK_DELETE_SUCCESS,
     BOOK_DELETE_ERROR,
+    BOOK_CREATE,
+    BOOK_CREATE_SUCCESS,
+    BOOK_CREATE_ERROR,
 } from "../constants";
 import axios from "axios";
 import { rawToForm } from "../../utils/utils";
@@ -74,5 +77,23 @@ export const bookEdit = (currentUser, token, bookId, formProps, callback) => asy
         }
     } catch (e) {
         dispatch({ type: BOOK_EDIT_ERROR, payload: "Hubo un error al intentar modificar el libro." });
+    }
+};
+
+export const bookCreate = (currentUser, token, formProps, callback) => async (dispatch) => {
+    const form = rawToForm(formProps);
+    dispatch({ type: BOOK_CREATE });
+    try {
+        const response = await axios.post(API_URL + "/books/" + currentUser, form, {
+            headers: {
+                authorization: token,
+            },
+        });
+        dispatch({ type: BOOK_CREATE_SUCCESS, payload: response.data });
+        if (callback) {
+            callback();
+        }
+    } catch (e) {
+        dispatch({ type: BOOK_CREATE_ERROR, payload: "Hubo un error al intentar crear el libro." });
     }
 };

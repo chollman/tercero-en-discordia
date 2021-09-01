@@ -42,8 +42,9 @@ const BookForm = ({ book, validate, onSubmit, formData }) => {
             initialValues={{
                 ...formData,
             }}
-            render={({ handleSubmit, form, values }) => (
+            render={({ handleSubmit, form, values, submitError }) => (
                 <FormBootstrap id="book-form" className="edit-category-form" onSubmit={handleSubmit}>
+                    <pre>{JSON.stringify(values, 0, 2)}</pre>
                     <FormBootstrap.Group className="mb-3" controlId="formBookTitle">
                         <FormBootstrap.Label>Título</FormBootstrap.Label>
                         <Field
@@ -63,7 +64,7 @@ const BookForm = ({ book, validate, onSubmit, formData }) => {
                         />
                     </FormBootstrap.Group>
                     <FormBootstrap.Row>
-                        <FormBootstrap.Group as={Col} className="mb-3" controlId="formBookAuthors">
+                        <FormBootstrap.Group as={Col} className="mb-3 form-searcher" controlId="formBookAuthors">
                             <FormBootstrap.Label>Autores</FormBootstrap.Label>
                             <FieldArray name="authors">
                                 {({ fields }) =>
@@ -128,7 +129,7 @@ const BookForm = ({ book, validate, onSubmit, formData }) => {
                         </FormBootstrap.Group>
                     </FormBootstrap.Row>
                     <FormBootstrap.Row>
-                        <FormBootstrap.Group as={Col} className="mb-3" controlId="formBookCategories">
+                        <FormBootstrap.Group as={Col} className="mb-3 form-searcher" controlId="formBookCategories">
                             <FormBootstrap.Label>Categorías</FormBootstrap.Label>
                             <FieldArray name="categories">
                                 {({ fields }) =>
@@ -232,6 +233,7 @@ const BookForm = ({ book, validate, onSubmit, formData }) => {
                             placeholder="Ingresar URL"
                         />
                     </FormBootstrap.Group>
+                    {submitError && <div className="error-input">{submitError}</div>}
                 </FormBootstrap>
             )}
         />

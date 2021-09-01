@@ -3,6 +3,7 @@ import Book from "../../../components/forms/books/book";
 import { useDispatch, useSelector } from "react-redux";
 import { bookDelete, bookEdit, selectBook } from "../../../../../state/books/actions";
 import { extractIds } from "../../../../../utils/utils";
+import { FORM_ERROR } from "final-form";
 
 const BookContainer = ({ book }) => {
     const dispatch = useDispatch();
@@ -15,6 +16,14 @@ const BookContainer = ({ book }) => {
 
     const onSubmit = (formProps) => {
         setIsSaving(true);
+
+        if (!formProps.categories || formProps.categories.length === 0) {
+            return { [FORM_ERROR]: "El libro debe tener al menos una categoría" };
+        }
+        if (!formProps.authors || formProps.authors.length === 0) {
+            return { [FORM_ERROR]: "El libro debe tener al menos un autor" };
+        }
+
         formProps.authors = extractIds(formProps.authors);
         formProps.categories = extractIds(formProps.categories);
 
@@ -32,7 +41,10 @@ const BookContainer = ({ book }) => {
             errors.title = "Campo obligatorio";
         }
         if (values.title && values.title.length < 4) {
-            errors.title = "El título del libro debe tener más de 4 letras";
+            errors.title = "El título debe tener más de 4 letras";
+        }
+        if (!values.categories || values.categories.length === 0) {
+            errors.categories = "El libro debe tener al menos una categoría";
         }
         return errors;
     };

@@ -6,6 +6,7 @@ import Book from "../../../containers/forms/books/book";
 import Container from "react-bootstrap/Container";
 import Spinner from "react-bootstrap/Spinner";
 import Modal from "react-bootstrap/Modal";
+import BookForm from "./book-form";
 
 const ViewBooks = ({ books, showEditModal, handleCloseEditModal, onCreateBooksButtonClicked, validate, onSubmit }) => {
     return (
@@ -55,14 +56,13 @@ const renderModal = (onSubmit, validate, showEditModal, handleCloseEditModal) =>
                 <Modal.Title>Crear libro</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                MODAL BODY
-                {/*<AuthorForm validate={validate} onSubmit={onSubmit} />*/}
+                <BookForm validate={validate} onSubmit={onSubmit} />
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={handleCloseEditModal}>
                     Cerrar
                 </Button>
-                <Button variant="primary" type="submit" form="book-form" onClick={handleCloseEditModal}>
+                <Button variant="primary" type="submit" form="book-form">
                     Crear libro
                 </Button>
             </Modal.Footer>
