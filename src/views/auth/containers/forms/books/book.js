@@ -10,11 +10,21 @@ const BookContainer = ({ book }) => {
 
     const [isSaving, setIsSaving] = useState(false);
     const [showEditModal, setShowEditModal] = useState(false);
-    let [formData, setFormData] = useState({});
+    let [formData, setFormData] = useState({
+        title: "",
+        description: "",
+        authors: [],
+        isbn: "",
+        numberOfPages: "",
+        publicationDate: "",
+        categories: [],
+        linkToEbook: "",
+        linkToPaperBook: "",
+    });
 
     const { currentUser, authenticated } = useSelector((state) => state.auth);
 
-    const onSubmit = (formProps) => {
+    const onSubmit = (formProps, formApi) => {
         setIsSaving(true);
 
         if (!formProps.categories || formProps.categories.length === 0) {
@@ -22,6 +32,9 @@ const BookContainer = ({ book }) => {
         }
         if (!formProps.authors || formProps.authors.length === 0) {
             return { [FORM_ERROR]: "El libro debe tener al menos un autor" };
+        }
+        if (formApi.getState().pristine) {
+            return { [FORM_ERROR]: "Debe modificar al menos algún campo para editar el libro." };
         }
 
         formProps.authors = extractIds(formProps.authors);
@@ -55,13 +68,25 @@ const BookContainer = ({ book }) => {
 
     const onEditButtonClicked = (book) => {
         dispatch(selectBook(book));
-        setFormData(book);
+        setFormData({
+            title: book.title || "",
+            description: book.description || "",
+            authors: book.authors || [],
+            isbn: book.isbn || "",
+            numberOfPages: book.numberOfPages || "",
+            publicationDate: book.publicationDate || "",
+            categories: book.categories || [],
+            linkToEbook: book.linkToEbook || "",
+            linkToPaperBook: book.linkToPaperBook || "",
+        });
         setShowEditModal(true);
     };
 
     const handleCloseEditModal = () => {
         setShowEditModal(false);
     };
+
+    const imageHash = Date.now();
 
     return (
         <Book
@@ -74,6 +99,7 @@ const BookContainer = ({ book }) => {
             validate={validate}
             showEditModal={showEditModal}
             handleCloseEditModal={handleCloseEditModal}
+            imageHash={imageHash}
         />
     );
 };

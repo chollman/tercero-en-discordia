@@ -44,7 +44,6 @@ const BookForm = ({ book, validate, onSubmit, formData }) => {
             }}
             render={({ handleSubmit, form, values, submitError }) => (
                 <FormBootstrap id="book-form" className="edit-category-form" onSubmit={handleSubmit}>
-                    <pre>{JSON.stringify(values, 0, 2)}</pre>
                     <FormBootstrap.Group className="mb-3" controlId="formBookTitle">
                         <FormBootstrap.Label>Título</FormBootstrap.Label>
                         <Field
@@ -141,7 +140,7 @@ const BookForm = ({ book, validate, onSubmit, formData }) => {
                                                         name={`${category}.name`}
                                                         type="text"
                                                         component={TextFieldAdapter}
-                                                        placeholder="Buscar categoría"
+                                                        disabled
                                                     />
                                                 </Col>
                                                 <Col className="mb-1" md="auto">
@@ -244,7 +243,7 @@ const AuthorRow = ({ author, onClick }) => {
     return (
         <FormBootstrap.Row>
             <Col className="mb-1">
-                <Field name={`${author}.name`} type="text" component={TextFieldAdapter} placeholder="Buscar autor" />
+                <Field name={`${author}.name`} type="text" component={TextFieldAdapter} disabled />
             </Col>
             <Col className="mb-1" md="auto">
                 <Button variant="outline-secondary" onClick={onClick}>

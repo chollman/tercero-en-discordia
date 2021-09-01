@@ -17,6 +17,7 @@ const Book = ({
     formData,
     showEditModal,
     handleCloseEditModal,
+    imageHash,
 }) => {
     return (
         <Row className="admin-item">
@@ -30,7 +31,10 @@ const Book = ({
                 {book.hasCoverImage && (
                     <span className="book-image">
                         <span className="image-container">
-                            <Image src={`${process.env.REACT_APP_API_URL}/books/cover/${book._id}`} height={100} />
+                            <Image
+                                src={`${process.env.REACT_APP_API_URL}/books/cover/${book._id}?${imageHash}`}
+                                height={100}
+                            />
                         </span>
                     </span>
                 )}
