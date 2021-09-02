@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { bookDelete, bookEdit, selectBook } from "../../../../../state/books/actions";
 import { extractIds } from "../../../../../utils/utils";
 import { FORM_ERROR } from "final-form";
+import moment from "moment";
 
 const BookContainer = ({ book }) => {
     const dispatch = useDispatch();
@@ -74,7 +75,7 @@ const BookContainer = ({ book }) => {
             authors: book.authors || [],
             isbn: book.isbn || "",
             numberOfPages: book.numberOfPages || "",
-            publicationDate: book.publicationDate || "",
+            publicationDate: moment(book.publicationDate).format("MM/DD/YYYY") || "",
             categories: book.categories || [],
             linkToEbook: book.linkToEbook || "",
             linkToPaperBook: book.linkToPaperBook || "",
