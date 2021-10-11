@@ -8,7 +8,7 @@ import "../libreria.scss";
 
 const BookDetailContainer = () => {
     const dispatch = useDispatch();
-    let { bookId } = useParams();
+    const { bookId } = useParams();
     const { currentBook, isFetching } = useSelector((state) => state.books);
 
     useEffect(() => {

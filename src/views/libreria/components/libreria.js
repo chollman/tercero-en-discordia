@@ -5,11 +5,13 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Spinner from "react-bootstrap/Spinner";
+import ListGroup from "react-bootstrap/ListGroup";
 import Book from "./book";
+import { LinkContainer } from "react-router-bootstrap";
 
 import "../libreria.scss";
 
-const Libreria = ({ books }) => {
+const Libreria = ({ books, category }) => {
     if (books.errorMessage) {
         return renderError(books.errorMessage);
     }
@@ -21,12 +23,29 @@ const Libreria = ({ books }) => {
             ) : (
                 <Container>
                     <Row>
-                        <Col md={2}>
-                            {books.categoriesInUse.map((cat) => {
-                                return <div key={cat._id}>{cat.name}</div>;
-                            })}
+                        <Col className="categories-list" md={2}>
+                            <h3>Categorías</h3>
+                            <ListGroup variant="flush">
+                                <LinkContainer to="/libreria">
+                                    <ListGroup.Item>Todos</ListGroup.Item>
+                                </LinkContainer>
+                                {books.categoriesInUse.map((cat) => {
+                                    return (
+                                        <LinkContainer key={cat._id} to={`/libreria/${cat._id}`}>
+                                            <ListGroup.Item>{cat.name}</ListGroup.Item>
+                                        </LinkContainer>
+                                    );
+                                })}
+                            </ListGroup>
                         </Col>
                         <Col md={10}>
+                            {category && (
+                                <Row>
+                                    <Col className="category-title" md={12}>
+                                        <h3>Categoría {category.name}</h3>
+                                    </Col>
+                                </Row>
+                            )}
                             <Row>
                                 {books.booksArr.map((book) => {
                                     return (

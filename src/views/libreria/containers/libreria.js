@@ -1,21 +1,35 @@
 import React, { useEffect } from "react";
 import Libreria from "../components/libreria";
-import { handleFetchingBooks, handleFetchingBooksCategories } from "../../../state/books/actions";
+import {
+    handleFetchingBooks,
+    handleFetchingBooksCategories,
+    handleFetchingBooksByCategory,
+} from "../../../state/books/actions";
 
 import "../libreria.scss";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 const LibreriaContainer = () => {
     const books = useSelector((state) => state.books);
+    const { catId } = useParams();
     const dispatch = useDispatch();
 
     useEffect(() => {
         document.title = "Librería | Editorial TED";
-        dispatch(handleFetchingBooks());
+        if (catId) {
+            dispatch(handleFetchingBooksByCategory(catId));
+        } else {
+            dispatch(handleFetchingBooks());
+        }
         dispatch(handleFetchingBooksCategories());
-    }, [dispatch]);
+    }, [catId, dispatch]);
 
-    return <Libreria books={books} />;
+    const category = books.categoriesInUse.filter((cat) => {
+        return cat._id === catId;
+    })[0];
+
+    return <Libreria books={books} category={category} />;
 };
 
 export default LibreriaContainer;

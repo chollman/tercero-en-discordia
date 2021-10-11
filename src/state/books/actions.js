@@ -113,3 +113,13 @@ export const handleFetchingBooksCategories = () => async (dispatch) => {
         });
     }
 };
+
+export const handleFetchingBooksByCategory = (catId) => async (dispatch) => {
+    dispatch({ type: FETCHING_BOOKS });
+    try {
+        const response = await axios.get(`${API_URL}/books?categories=${catId}`);
+        dispatch({ type: FETCHING_BOOKS_SUCCESS, payload: response.data });
+    } catch (e) {
+        dispatch({ type: FETCHING_BOOKS_ERROR, payload: "Hubo un error al intentar actualizar los libros." });
+    }
+};

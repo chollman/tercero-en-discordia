@@ -9,10 +9,12 @@ import HeaderBar from "../../../components/header-bar";
 import Spinner from "react-bootstrap/Spinner";
 import Footer from "../../../components/footer";
 import ImageLoader from "../../../ui/imageLoader";
+import moment from "moment";
+import Image from "react-bootstrap/Image";
+import { LinkContainer } from "react-router-bootstrap";
 
 const BookDetail = ({ book, isFetching }) => {
     const [show, setShow] = useState(false);
-
     return (
         <div>
             <HeaderBar title="Librería" link="libreria" />
@@ -65,17 +67,69 @@ const BookDetail = ({ book, isFetching }) => {
                                 {book.categories &&
                                     book.categories.map((category) => {
                                         return (
-                                            <Button key={category.name} size="sm">
-                                                {category.name}
-                                            </Button>
+                                            <LinkContainer key={category.name} to={`/libreria/${category._id}`}>
+                                                <Button size="sm">{category.name}</Button>
+                                            </LinkContainer>
                                         );
                                     })}
                             </div>
                             <Row className="book-data">
                                 {book.isbn && <Col md={6}>ISBN: {book.isbn}</Col>}
-                                {book.publicationDate && <Col md={6}>Publicado: {book.publicationDate}</Col>}
+                                {book.publicationDate && (
+                                    <Col md={6}>Publicado: {moment(book.publicationDate).format("DD/MM/YYYY")}</Col>
+                                )}
                             </Row>
+                            <Row className="mt-5">
+                                <Col md={6}>
+                                    <a rel="noreferrer" target="_blank" href={book.linkToEbook}>
+                                        <Button variant="warning" block>
+                                            Comprar versión Ebook
+                                        </Button>
+                                    </a>
+                                </Col>
+                                <Col md={6}>
+                                    <a rel="noreferrer" target="_blank" href={book.linkToPaperBook}>
+                                        <Button variant="warning" color="white" block>
+                                            Comprar versión papel
+                                        </Button>
+                                    </a>
+                                </Col>
+                            </Row>
+                            <hr />
+                            {book.authors && book.authors.length > 0 && (
+                                <>
+                                    {book.authors.length > 1 && <h5>Sobre los autores</h5>}
+                                    {book.authors.length === 1 && <h5>Sobre el autor</h5>}
+                                    {book.authors.map((author) => {
+                                        return (
+                                            <div className="author" key={author._id}>
+                                                <Row>
+                                                    <Col>
+                                                        {author.hasPhoto && (
+                                                            <span className="author-image">
+                                                                <span className="image-container">
+                                                                    <Image
+                                                                        src={`${process.env.REACT_APP_API_URL}/authors/photo/${author._id}`}
+                                                                        height={100}
+                                                                    />
+                                                                </span>
+                                                            </span>
+                                                        )}
+                                                        <span className="author-name">{author.name}</span>
+                                                    </Col>
+                                                </Row>
+                                                <Row>
+                                                    <Col className="author-bio">{author.biography}</Col>
+                                                </Row>
+                                            </div>
+                                        );
+                                    })}
+                                </>
+                            )}
                         </Col>
+                    </Row>
+                    <Row>
+                        <Col>TITULOS RELACIONADOS</Col>
                     </Row>
                 </Container>
             )}

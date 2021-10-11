@@ -61,6 +61,11 @@ const Routes = ({ location }) => {
                     <BookDetail />
                 </PageWrapper>
             </Route>
+            <Route path="/libreria/:catId">
+                <PageWrapper location={location}>
+                    <Libreria />
+                </PageWrapper>
+            </Route>
             <Route path="/libreria">
                 <PageWrapper location={location}>
                     <Libreria />
