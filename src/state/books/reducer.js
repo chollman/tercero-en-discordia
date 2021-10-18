@@ -17,6 +17,9 @@ import {
     FETCHING_BOOK_CATEGORIES,
     FETCHING_BOOK_CATEGORIES_SUCCESS,
     FETCHING_BOOK_CATEGORIES_ERROR,
+    FETCHING_RELATED_BOOKS,
+    FETCHING_RELATED_BOOKS_SUCCESS,
+    FETCHING_RELATED_BOOKS_ERROR,
 } from "../constants";
 
 const INITIAL_STATE = {
@@ -27,6 +30,8 @@ const INITIAL_STATE = {
     currentBook: {},
     isFetchingCategoriesList: false,
     categoriesInUse: [],
+    relatedBooks: [],
+    isFetchingRelated: false,
 };
 
 function booksReducer(state = INITIAL_STATE, action) {
@@ -107,6 +112,12 @@ function booksReducer(state = INITIAL_STATE, action) {
             };
         case FETCHING_BOOK_CATEGORIES_ERROR:
             return { ...state, isFetchingCategoriesList: false, errorMessage: action.payload };
+        case FETCHING_RELATED_BOOKS_SUCCESS:
+            return { ...state, isFetchingRelated: false, relatedBooks: action.payload, errorMessage: "" };
+        case FETCHING_RELATED_BOOKS:
+            return { ...state, isFetchingRelated: true };
+        case FETCHING_RELATED_BOOKS_ERROR:
+            return { ...state, isFetchingRelated: false, errorMessage: action.payload };
         default:
             return state;
     }

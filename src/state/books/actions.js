@@ -1,23 +1,26 @@
 import {
-    FETCHING_BOOKS,
-    FETCHING_BOOKS_ERROR,
-    FETCHING_BOOKS_SUCCESS,
-    FETCHING_BOOK,
-    FETCHING_BOOK_SUCCESS,
-    FETCHING_BOOK_ERROR,
-    SELECT_BOOK,
-    BOOK_EDIT,
-    BOOK_EDIT_SUCCESS,
-    BOOK_EDIT_ERROR,
-    BOOK_DELETE,
-    BOOK_DELETE_SUCCESS,
-    BOOK_DELETE_ERROR,
     BOOK_CREATE,
-    BOOK_CREATE_SUCCESS,
     BOOK_CREATE_ERROR,
+    BOOK_CREATE_SUCCESS,
+    BOOK_DELETE,
+    BOOK_DELETE_ERROR,
+    BOOK_DELETE_SUCCESS,
+    BOOK_EDIT,
+    BOOK_EDIT_ERROR,
+    BOOK_EDIT_SUCCESS,
+    FETCHING_BOOK,
     FETCHING_BOOK_CATEGORIES,
     FETCHING_BOOK_CATEGORIES_ERROR,
     FETCHING_BOOK_CATEGORIES_SUCCESS,
+    FETCHING_BOOK_ERROR,
+    FETCHING_BOOK_SUCCESS,
+    FETCHING_BOOKS,
+    FETCHING_BOOKS_ERROR,
+    FETCHING_BOOKS_SUCCESS,
+    SELECT_BOOK,
+    FETCHING_RELATED_BOOKS,
+    FETCHING_RELATED_BOOKS_SUCCESS,
+    FETCHING_RELATED_BOOKS_ERROR,
 } from "../constants";
 import axios from "axios";
 import { rawToForm } from "../../utils/utils";
@@ -121,5 +124,18 @@ export const handleFetchingBooksByCategory = (catId) => async (dispatch) => {
         dispatch({ type: FETCHING_BOOKS_SUCCESS, payload: response.data });
     } catch (e) {
         dispatch({ type: FETCHING_BOOKS_ERROR, payload: "Hubo un error al intentar actualizar los libros." });
+    }
+};
+
+export const handleFetchingRelatedBooks = (bookId) => async (dispatch) => {
+    dispatch({ type: FETCHING_RELATED_BOOKS });
+    try {
+        const response = await axios.get(`${API_URL}/books/related/${bookId}`);
+        dispatch({ type: FETCHING_RELATED_BOOKS_SUCCESS, payload: response.data });
+    } catch (e) {
+        dispatch({
+            type: FETCHING_RELATED_BOOKS_ERROR,
+            payload: "Hubo un error al intentar buscar libros relacionados.",
+        });
     }
 };

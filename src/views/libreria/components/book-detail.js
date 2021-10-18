@@ -12,8 +12,9 @@ import ImageLoader from "../../../ui/imageLoader";
 import moment from "moment";
 import Image from "react-bootstrap/Image";
 import { LinkContainer } from "react-router-bootstrap";
+import Book from "./book";
 
-const BookDetail = ({ book, isFetching }) => {
+const BookDetail = ({ book, isFetching, relatedBooks, isFetchingRelated }) => {
     const [show, setShow] = useState(false);
     return (
         <div>
@@ -128,9 +129,24 @@ const BookDetail = ({ book, isFetching }) => {
                             )}
                         </Col>
                     </Row>
-                    <Row>
-                        <Col>TITULOS RELACIONADOS</Col>
-                    </Row>
+                    {isFetchingRelated ? (
+                        renderLoading()
+                    ) : (
+                        <Row>
+                            <Col md={12}>
+                                <h3>TITULOS RELACIONADOS</h3>
+                                <Row>
+                                    {relatedBooks.map((book) => {
+                                        return (
+                                            <Col className="related-book" md={2} key={book._id}>
+                                                <Book book={book} />
+                                            </Col>
+                                        );
+                                    })}
+                                </Row>
+                            </Col>
+                        </Row>
+                    )}
                 </Container>
             )}
             <Footer />
