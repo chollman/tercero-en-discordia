@@ -27,15 +27,17 @@ import { rawToForm } from "../../utils/utils";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
-export const handleFetchingBooks = () => async (dispatch) => {
-    dispatch({ type: FETCHING_BOOKS });
-    try {
-        const response = await axios.get(API_URL + "/books");
-        dispatch({ type: FETCHING_BOOKS_SUCCESS, payload: response.data });
-    } catch (e) {
-        dispatch({ type: FETCHING_BOOKS_ERROR, payload: "Hubo un error al intentar actualizar los libros." });
-    }
-};
+export const handleFetchingBooks =
+    (limit = undefined) =>
+    async (dispatch) => {
+        dispatch({ type: FETCHING_BOOKS });
+        try {
+            const response = await axios.get(`${API_URL}/books?limit=${limit}`);
+            dispatch({ type: FETCHING_BOOKS_SUCCESS, payload: response.data });
+        } catch (e) {
+            dispatch({ type: FETCHING_BOOKS_ERROR, payload: "Hubo un error al intentar actualizar los libros." });
+        }
+    };
 
 export const handleFetchingBook = (bookId) => async (dispatch) => {
     dispatch({ type: FETCHING_BOOK });
