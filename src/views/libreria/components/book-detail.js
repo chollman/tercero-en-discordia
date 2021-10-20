@@ -129,6 +129,16 @@ const BookDetail = ({ book, isFetching, relatedBooks, isFetchingRelated }) => {
                             )}
                         </Col>
                     </Row>
+                    <Row>
+                        <Col md={12}>
+                            <div
+                                className="fb-comments"
+                                data-href="https://developers.facebook.com/docs/plugins/comments#configurator"
+                                data-width=""
+                                data-numposts="5"
+                            />
+                        </Col>
+                    </Row>
                     {isFetchingRelated ? (
                         renderLoading()
                     ) : (
