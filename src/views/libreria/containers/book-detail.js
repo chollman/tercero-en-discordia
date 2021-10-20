@@ -12,10 +12,13 @@ const BookDetailContainer = () => {
     const { currentBook, isFetching, relatedBooks, isFetchingRelated } = useSelector((state) => state.books);
 
     useEffect(() => {
-        document.title = "Librería | Editorial TED";
-        dispatch(handleFetchingBook(bookId));
-        dispatch(handleFetchingRelatedBooks(bookId));
-    }, [bookId, dispatch]);
+        document.title = currentBook.title ? `${currentBook.title} | Editorial TED` : `Librería | Editorial TED`;
+        window.scrollTo(0, 0);
+        if (!currentBook.title) {
+            dispatch(handleFetchingBook(bookId));
+            dispatch(handleFetchingRelatedBooks(bookId));
+        }
+    }, [currentBook, bookId, dispatch]);
 
     return (
         <BookDetail
