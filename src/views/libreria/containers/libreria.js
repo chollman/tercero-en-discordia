@@ -17,6 +17,7 @@ const LibreriaContainer = () => {
 
     useEffect(() => {
         document.title = "Librería | Editorial TED";
+        window.scrollTo(0, 0);
         if (catId) {
             dispatch(handleFetchingBooksByCategory(catId));
         } else {

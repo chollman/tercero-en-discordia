@@ -12,6 +12,7 @@ import "../home.scss";
 const Home = () => {
     useEffect(() => {
         document.title = "Home | Editorial TED";
+        window.scrollTo(0, 0);
     }, []);
 
     return (
