@@ -12,6 +12,7 @@ import "../quienessomos.scss";
 const Quienessomos = () => {
     useEffect(() => {
         document.title = "Quiénes somos | Editorial TED";
+        window.scrollTo(0, 0);
     }, []);
 
     return (

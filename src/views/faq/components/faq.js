@@ -10,6 +10,7 @@ import "../faq.scss";
 const Faq = () => {
     useEffect(() => {
         document.title = "Preguntas frecuentes | Editorial TED";
+        window.scrollTo(0, 0);
     }, []);
 
     return (

@@ -13,6 +13,7 @@ import "../packs.scss";
 const Packs = () => {
     useEffect(() => {
         document.title = "Packs promocionales | Editorial TED";
+        window.scrollTo(0, 0);
     }, []);
 
     return (

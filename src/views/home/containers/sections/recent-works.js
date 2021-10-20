@@ -10,7 +10,6 @@ const RecentWorksContainer = () => {
     const books = useSelector((state) => state.books);
 
     useEffect(() => {
-        document.title = "Librería | Editorial TED";
         dispatch(handleFetchingBooks(6));
     }, [bookId, dispatch]);
 

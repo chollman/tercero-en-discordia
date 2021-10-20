@@ -21,6 +21,7 @@ import "../servicios.scss";
 const Servicios = () => {
     useEffect(() => {
         document.title = "Servicios | Editorial TED";
+        window.scrollTo(0, 0);
     }, []);
 
     return (
