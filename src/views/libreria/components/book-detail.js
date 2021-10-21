@@ -14,7 +14,7 @@ import Image from "react-bootstrap/Image";
 import { LinkContainer } from "react-router-bootstrap";
 import Book from "./book";
 
-const BookDetail = ({ book, isFetching, relatedBooks, isFetchingRelated }) => {
+const BookDetail = ({ book, isFetching, relatedBooks, isFetchingRelated, shareReady }) => {
     const [show, setShow] = useState(false);
     return (
         <div>
@@ -130,10 +130,12 @@ const BookDetail = ({ book, isFetching, relatedBooks, isFetchingRelated }) => {
                         </Col>
                     </Row>
                     <Row>
-                        <Col md={12}>
-                            <h3>Compartir</h3>
-                            <div className="sharethis-inline-share-buttons" />
-                        </Col>
+                        {shareReady && (
+                            <Col md={12}>
+                                <h3>Compartir</h3>
+                                <div className="sharethis-inline-share-buttons" />
+                            </Col>
+                        )}
                         <Col md={12}>
                             <h3>Dejar un comentario sobre este libro</h3>
                             <div
