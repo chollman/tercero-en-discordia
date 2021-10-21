@@ -131,6 +131,7 @@ const BookDetail = ({ book, isFetching, relatedBooks, isFetchingRelated }) => {
                     </Row>
                     <Row>
                         <Col md={12}>
+                            <h3>Dejanos tus comentarios sobre este libro</h3>
                             <div
                                 className="fb-comments"
                                 data-href={`${process.env.REACT_APP_URL}/libreria/libro/${book._id}`}
