@@ -132,17 +132,7 @@ const BookDetail = ({ book, isFetching, relatedBooks, isFetchingRelated }) => {
                     <Row>
                         <Col md={12}>
                             <h3>Compartir</h3>
-                            <div className="a2a_kit a2a_kit_size_64 a2a_default_style">
-                                {/* eslint-disable-next-line jsx-a11y/anchor-has-content,jsx-a11y/anchor-is-valid */}
-                                <a className="a2a_button_facebook" />
-                                {/* eslint-disable-next-line jsx-a11y/anchor-has-content,jsx-a11y/anchor-is-valid */}
-                                <a className="a2a_button_twitter" />
-                                {/* eslint-disable-next-line jsx-a11y/anchor-has-content,jsx-a11y/anchor-is-valid */}
-                                <a className="a2a_button_pinterest" />
-                                {/* eslint-disable-next-line jsx-a11y/anchor-has-content,jsx-a11y/anchor-is-valid */}
-                                <a className="a2a_dd" href="https://www.addtoany.com/share" />
-                            </div>
-                            <script async nonce="pqgp1YqS" src="https://static.addtoany.com/menu/page.js" />
+                            <div className="sharethis-inline-share-buttons" />
                         </Col>
                         <Col md={12}>
                             <h3>Dejar un comentario sobre este libro</h3>
