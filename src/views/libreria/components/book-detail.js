@@ -142,7 +142,7 @@ const BookDetail = ({ book, isFetching, relatedBooks, isFetchingRelated }) => {
                                 {/* eslint-disable-next-line jsx-a11y/anchor-has-content,jsx-a11y/anchor-is-valid */}
                                 <a className="a2a_dd" href="https://www.addtoany.com/share" />
                             </div>
-                            <script async src="https://static.addtoany.com/menu/page.js" />
+                            <script async nonce="pqgp1YqS" src="https://static.addtoany.com/menu/page.js" />
                         </Col>
                         <Col md={12}>
                             <h3>Dejar un comentario sobre este libro</h3>
