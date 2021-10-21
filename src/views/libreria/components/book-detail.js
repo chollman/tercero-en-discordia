@@ -133,12 +133,14 @@ const BookDetail = ({ book, isFetching, relatedBooks, isFetchingRelated }) => {
                         <Col md={12}>
                             <h3>Compartir</h3>
                             <div className="a2a_kit a2a_kit_size_64 a2a_default_style">
-                                <i className="a2a_button_facebook" />
-                                <i className="a2a_button_twitter" />
-                                <i className="a2a_button_pinterest" />
-                                <a className="a2a_dd" href="https://www.addtoany.com/share">
-                                    1
-                                </a>
+                                {/* eslint-disable-next-line jsx-a11y/anchor-has-content,jsx-a11y/anchor-is-valid */}
+                                <a className="a2a_button_facebook" />
+                                {/* eslint-disable-next-line jsx-a11y/anchor-has-content,jsx-a11y/anchor-is-valid */}
+                                <a className="a2a_button_twitter" />
+                                {/* eslint-disable-next-line jsx-a11y/anchor-has-content,jsx-a11y/anchor-is-valid */}
+                                <a className="a2a_button_pinterest" />
+                                {/* eslint-disable-next-line jsx-a11y/anchor-has-content,jsx-a11y/anchor-is-valid */}
+                                <a className="a2a_dd" href="https://www.addtoany.com/share" />
                             </div>
                         </Col>
                         <Col md={12}>
