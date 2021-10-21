@@ -133,8 +133,8 @@ const BookDetail = ({ book, isFetching, relatedBooks, isFetchingRelated }) => {
                         <Col md={12}>
                             <div
                                 className="fb-comments"
-                                data-href="https://developers.facebook.com/docs/plugins/comments#configurator"
-                                data-width=""
+                                data-href={`${process.env.REACT_APP_URL}/libreria/libro/${book._id}`}
+                                data-width="100%"
                                 data-numposts="5"
                             />
                         </Col>

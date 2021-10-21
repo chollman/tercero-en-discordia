@@ -11,6 +11,12 @@ const BookDetailContainer = () => {
     const { bookId } = useParams();
     const { currentBook, isFetching, relatedBooks, isFetchingRelated } = useSelector((state) => state.books);
 
+    React.useEffect(() => {
+        if (window.FB) {
+            window.FB.XFBML.parse();
+        }
+    }, []);
+
     useEffect(() => {
         document.title = currentBook.title ? `${currentBook.title} | Editorial TED` : `Librería | Editorial TED`;
         window.scrollTo(0, 0);
