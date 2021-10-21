@@ -131,7 +131,16 @@ const BookDetail = ({ book, isFetching, relatedBooks, isFetchingRelated }) => {
                     </Row>
                     <Row>
                         <Col md={12}>
-                            <h3>Dejanos tus comentarios sobre este libro</h3>
+                            <h3>Compartir</h3>
+                            <div className="a2a_kit a2a_kit_size_64 a2a_default_style">
+                                <a className="a2a_button_facebook" />
+                                <a className="a2a_button_twitter" />
+                                <a className="a2a_button_pinterest" />
+                                <a className="a2a_dd" href="https://www.addtoany.com/share" />
+                            </div>
+                        </Col>
+                        <Col md={12}>
+                            <h3>Dejar un comentario sobre este libro</h3>
                             <div
                                 className="fb-comments"
                                 data-href={`${process.env.REACT_APP_URL}/libreria/libro/${book._id}`}
