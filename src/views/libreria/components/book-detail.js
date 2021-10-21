@@ -133,10 +133,12 @@ const BookDetail = ({ book, isFetching, relatedBooks, isFetchingRelated }) => {
                         <Col md={12}>
                             <h3>Compartir</h3>
                             <div className="a2a_kit a2a_kit_size_64 a2a_default_style">
-                                <a className="a2a_button_facebook" />
-                                <a className="a2a_button_twitter" />
-                                <a className="a2a_button_pinterest" />
-                                <a className="a2a_dd" href="https://www.addtoany.com/share" />
+                                <i className="a2a_button_facebook" />
+                                <i className="a2a_button_twitter" />
+                                <i className="a2a_button_pinterest" />
+                                <a className="a2a_dd" href="https://www.addtoany.com/share">
+                                    1
+                                </a>
                             </div>
                         </Col>
                         <Col md={12}>
