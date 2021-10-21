@@ -9,11 +9,6 @@ const BookDetailContainer = () => {
     const dispatch = useDispatch();
     const { bookId } = useParams();
     const { currentBook, isFetching, relatedBooks, isFetchingRelated } = useSelector((state) => state.books);
-    //const [shareReady, setShareReady] = useState(false);
-
-    // const scriptLoaded = () => {
-    //     setShareReady(true);
-    // };
 
     useEffect(() => {
         if (window.FB) {
@@ -24,13 +19,6 @@ const BookDetailContainer = () => {
         if (!currentBook.title) {
             dispatch(handleFetchingBook(bookId));
             dispatch(handleFetchingRelatedBooks(bookId));
-
-            // const rand = Math.round(Math.random() * 1000000000);
-            // const sharingScript = document.createElement("script");
-            // sharingScript.src = `https://platform-api.sharethis.com/js/sharethis.js#property=61719c2f6c54f40014a7fad0&product=inline-share-buttons&${rand}`;
-            // sharingScript.async = true;
-            // sharingScript.onload = () => scriptLoaded();
-            // document.head.appendChild(sharingScript);
         }
     }, [currentBook, bookId, dispatch]);
 
@@ -40,7 +28,6 @@ const BookDetailContainer = () => {
             isFetching={isFetching}
             relatedBooks={relatedBooks}
             isFetchingRelated={isFetchingRelated}
-            //shareReady={shareReady}
         />
     );
 };

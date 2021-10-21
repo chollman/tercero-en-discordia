@@ -13,20 +13,12 @@ import moment from "moment";
 import Image from "react-bootstrap/Image";
 import { LinkContainer } from "react-router-bootstrap";
 import Book from "./book";
-//import { Helmet } from "react-helmet";
 import { InlineShareButtons } from "sharethis-reactjs";
 
-const BookDetail = ({ book, isFetching, relatedBooks, isFetchingRelated, shareReady }) => {
+const BookDetail = ({ book, isFetching, relatedBooks, isFetchingRelated }) => {
     const [show, setShow] = useState(false);
     return (
         <div>
-            {/*<Helmet>*/}
-            {/*    <script*/}
-            {/*        type="text/javascript"*/}
-            {/*        src="https://platform-api.sharethis.com/js/sharethis.js#property=61719c2f6c54f40014a7fad0&product=inline-share-buttons"*/}
-            {/*        async="async"*/}
-            {/*    />*/}
-            {/*</Helmet>*/}
             <HeaderBar title="Librería" link="libreria" />
             {isFetching ? (
                 renderLoading()
@@ -171,10 +163,12 @@ const BookDetail = ({ book, isFetching, relatedBooks, isFetchingRelated, shareRe
                                     title: `Editorial TED - ${book.title}`, // (defaults to og:title or twitter:title)
                                     message: book.description, // (only for email sharing)
                                     subject: `Editorial TED - ${book.title}`, // (only for email sharing)
-                                    username: "Editorial TED", // (only for twitter sharing)
+                                    username: "EditorialTED", // (only for twitter sharing)
                                 }}
                             />
                         </Col>
+                    </Row>
+                    <Row className="mt-5">
                         <Col md={12}>
                             <h3>Dejar un comentario sobre este libro</h3>
                             <div
