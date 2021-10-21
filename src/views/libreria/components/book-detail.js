@@ -13,11 +13,19 @@ import moment from "moment";
 import Image from "react-bootstrap/Image";
 import { LinkContainer } from "react-router-bootstrap";
 import Book from "./book";
+import { Helmet } from "react-helmet";
 
 const BookDetail = ({ book, isFetching, relatedBooks, isFetchingRelated, shareReady }) => {
     const [show, setShow] = useState(false);
     return (
         <div>
+            <Helmet>
+                <script
+                    type="text/javascript"
+                    src="https://platform-api.sharethis.com/js/sharethis.js#property=61719c2f6c54f40014a7fad0&product=inline-share-buttons"
+                    async="async"
+                />
+            </Helmet>
             <HeaderBar title="Librería" link="libreria" />
             {isFetching ? (
                 renderLoading()
@@ -130,12 +138,10 @@ const BookDetail = ({ book, isFetching, relatedBooks, isFetchingRelated, shareRe
                         </Col>
                     </Row>
                     <Row>
-                        {shareReady && (
-                            <Col md={12}>
-                                <h3>Compartir</h3>
-                                <div className="sharethis-inline-share-buttons" />
-                            </Col>
-                        )}
+                        <Col md={12}>
+                            <h3>Compartir</h3>
+                            <div className="sharethis-inline-share-buttons" />
+                        </Col>
                         <Col md={12}>
                             <h3>Dejar un comentario sobre este libro</h3>
                             <div

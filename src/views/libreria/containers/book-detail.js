@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { handleFetchingBook, handleFetchingRelatedBooks } from "../../../state/books/actions";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,11 +9,11 @@ const BookDetailContainer = () => {
     const dispatch = useDispatch();
     const { bookId } = useParams();
     const { currentBook, isFetching, relatedBooks, isFetchingRelated } = useSelector((state) => state.books);
-    const [shareReady, setShareReady] = useState(false);
+    //const [shareReady, setShareReady] = useState(false);
 
-    const scriptLoaded = () => {
-        setShareReady(true);
-    };
+    // const scriptLoaded = () => {
+    //     setShareReady(true);
+    // };
 
     useEffect(() => {
         if (window.FB) {
@@ -25,12 +25,12 @@ const BookDetailContainer = () => {
             dispatch(handleFetchingBook(bookId));
             dispatch(handleFetchingRelatedBooks(bookId));
 
-            const rand = Math.round(Math.random() * 1000000000);
-            const sharingScript = document.createElement("script");
-            sharingScript.src = `https://platform-api.sharethis.com/js/sharethis.js#property=61719c2f6c54f40014a7fad0&product=inline-share-buttons&${rand}`;
-            sharingScript.async = true;
-            sharingScript.onload = () => scriptLoaded();
-            document.head.appendChild(sharingScript);
+            // const rand = Math.round(Math.random() * 1000000000);
+            // const sharingScript = document.createElement("script");
+            // sharingScript.src = `https://platform-api.sharethis.com/js/sharethis.js#property=61719c2f6c54f40014a7fad0&product=inline-share-buttons&${rand}`;
+            // sharingScript.async = true;
+            // sharingScript.onload = () => scriptLoaded();
+            // document.head.appendChild(sharingScript);
         }
     }, [currentBook, bookId, dispatch]);
 
@@ -40,7 +40,7 @@ const BookDetailContainer = () => {
             isFetching={isFetching}
             relatedBooks={relatedBooks}
             isFetchingRelated={isFetchingRelated}
-            shareReady={shareReady}
+            //shareReady={shareReady}
         />
     );
 };
