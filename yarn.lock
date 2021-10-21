@@ -10782,6 +10782,11 @@
     "inherits" "^2.0.1"
     "safe-buffer" "^5.0.1"
 
+"sharethis-reactjs@^1.6.0":
+  "integrity" "sha512-cYrf9OgStwfOjPrHhk/0SpFuJNFQQU6OY7pWlhWtu3smuF+rYNF+vOL4aM/pwaP1QGwwrEuHTAqfpG3OWXPIag=="
+  "resolved" "https://registry.npmjs.org/sharethis-reactjs/-/sharethis-reactjs-1.6.0.tgz"
+  "version" "1.6.0"
+
 "shebang-command@^1.2.0":
   "integrity" "sha1-RKrGW2lbAzmJaMOfNj/uXer98eo="
   "resolved" "https://registry.npmjs.org/shebang-command/-/shebang-command-1.2.0.tgz"

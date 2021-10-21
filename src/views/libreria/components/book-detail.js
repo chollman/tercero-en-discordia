@@ -13,19 +13,20 @@ import moment from "moment";
 import Image from "react-bootstrap/Image";
 import { LinkContainer } from "react-router-bootstrap";
 import Book from "./book";
-import { Helmet } from "react-helmet";
+//import { Helmet } from "react-helmet";
+import { InlineShareButtons } from "sharethis-reactjs";
 
 const BookDetail = ({ book, isFetching, relatedBooks, isFetchingRelated, shareReady }) => {
     const [show, setShow] = useState(false);
     return (
         <div>
-            <Helmet>
-                <script
-                    type="text/javascript"
-                    src="https://platform-api.sharethis.com/js/sharethis.js#property=61719c2f6c54f40014a7fad0&product=inline-share-buttons"
-                    async="async"
-                />
-            </Helmet>
+            {/*<Helmet>*/}
+            {/*    <script*/}
+            {/*        type="text/javascript"*/}
+            {/*        src="https://platform-api.sharethis.com/js/sharethis.js#property=61719c2f6c54f40014a7fad0&product=inline-share-buttons"*/}
+            {/*        async="async"*/}
+            {/*    />*/}
+            {/*</Helmet>*/}
             <HeaderBar title="Librería" link="libreria" />
             {isFetching ? (
                 renderLoading()
@@ -140,7 +141,39 @@ const BookDetail = ({ book, isFetching, relatedBooks, isFetchingRelated, shareRe
                     <Row>
                         <Col md={12}>
                             <h3>Compartir</h3>
-                            <div className="sharethis-inline-share-buttons" />
+                            <InlineShareButtons
+                                config={{
+                                    alignment: "left", // alignment of buttons (left, center, right)
+                                    color: "social", // set the color of buttons (social, white)
+                                    enabled: true, // show/hide buttons (true, false)
+                                    font_size: 16, // font size for the buttons
+                                    labels: "cta", // button labels (cta, counts, null)
+                                    language: "es", // which language to use (see LANGUAGES)
+                                    networks: [
+                                        // which networks to include (see SHARING NETWORKS)
+                                        "whatsapp",
+                                        "linkedin",
+                                        "messenger",
+                                        "facebook",
+                                        "twitter",
+                                    ],
+                                    padding: 12, // padding within buttons (INTEGER)
+                                    radius: 4, // the corner radius on each button (INTEGER)
+                                    show_total: false,
+                                    size: 40, // the size of each button (INTEGER)
+
+                                    // OPTIONAL PARAMETERS
+                                    url: `${process.env.REACT_APP_URL}/libreria/libro/${book._id}`, // (defaults to current url)
+                                    image: book.hasCoverImage
+                                        ? `${process.env.REACT_APP_API_URL}/books/backcover/${book._id}`
+                                        : "https://scontent.faep28-1.fna.fbcdn.net/v/t1.18169-9/305781_114023678711524_864582745_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=09cbfe&_nc_eui2=AeExdiOXWCHmt6JXIeWfAKHfTUh0ZZ3Wil9NSHRlndaKX5-YReyuAux8Z-hDMX0bnmk&_nc_ohc=qSU3seBZmdkAX9WJjy_&_nc_ht=scontent.faep28-1.fna&oh=8f5f19abbdde146fb31e1f07b9c75ff0&oe=6197D7EA", // (defaults to og:image or twitter:image)
+                                    description: book.description, // (defaults to og:description or twitter:description)
+                                    title: `Editorial TED - ${book.title}`, // (defaults to og:title or twitter:title)
+                                    message: book.description, // (only for email sharing)
+                                    subject: `Editorial TED - ${book.title}`, // (only for email sharing)
+                                    username: "Editorial TED", // (only for twitter sharing)
+                                }}
+                            />
                         </Col>
                         <Col md={12}>
                             <h3>Dejar un comentario sobre este libro</h3>
