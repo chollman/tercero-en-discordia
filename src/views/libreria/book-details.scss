@@ -6,6 +6,10 @@
 
     .book-cover {
         margin-bottom: 15px;
+        img {
+            width: 100%;
+            max-width: 250px;
+        }
     }
 
     .book-cover-placeholder {
@@ -81,6 +85,12 @@
 
         .author-bio {
             margin-top: 10px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .book-cover {
+            text-align: center;
         }
     }
 }
