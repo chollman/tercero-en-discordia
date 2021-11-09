@@ -15,7 +15,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import Book from "./book";
 import { InlineShareButtons } from "sharethis-reactjs";
 
-const BookDetail = ({ book, isFetching, relatedBooks, isFetchingRelated }) => {
+const BookDetail = ({ book, isFetching, relatedBooks, isFetchingRelated, changeCurrentBook }) => {
     const [show, setShow] = useState(false);
     return (
         <div>
@@ -184,12 +184,17 @@ const BookDetail = ({ book, isFetching, relatedBooks, isFetchingRelated }) => {
                     ) : (
                         <Row>
                             <Col md={12}>
-                                <h3>TITULOS RELACIONADOS</h3>
+                                <h3>Títulos Relacionados</h3>
                                 <Row>
-                                    {relatedBooks.map((book) => {
+                                    {relatedBooks.map((relatedBook) => {
                                         return (
-                                            <Col className="related-book" md={2} key={book._id}>
-                                                <Book book={book} />
+                                            <Col
+                                                className="related-book"
+                                                md={2}
+                                                key={relatedBook._id}
+                                                onClick={() => changeCurrentBook(relatedBook)}
+                                            >
+                                                <Book book={relatedBook} />
                                             </Col>
                                         );
                                     })}
