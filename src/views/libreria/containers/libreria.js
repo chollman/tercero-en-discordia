@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import Libreria from "../components/libreria";
 import {
     handleFetchingBooks,
     handleFetchingBooksCategories,
     handleFetchingBooksByCategory,
+    changeBooks,
 } from "../../../state/books/actions";
 
 import "../libreria.scss";
@@ -26,11 +27,18 @@ const LibreriaContainer = () => {
         dispatch(handleFetchingBooksCategories());
     }, [catId, dispatch]);
 
+    const onSearchBooksChange = useCallback(
+        (books) => {
+            dispatch(changeBooks(books));
+        },
+        [dispatch]
+    );
+
     const category = books.categoriesInUse.filter((cat) => {
         return cat._id === catId;
     })[0];
 
-    return <Libreria books={books} category={category} />;
+    return <Libreria books={books} category={category} onSearchBooksChange={onSearchBooksChange} />;
 };
 
 export default LibreriaContainer;

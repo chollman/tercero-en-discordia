@@ -8,13 +8,15 @@ import Spinner from "react-bootstrap/Spinner";
 import ListGroup from "react-bootstrap/ListGroup";
 import Book from "./book";
 import { LinkContainer } from "react-router-bootstrap";
+import SearchBooks from "../../../ui/search/search-books";
 
 import "../libreria.scss";
 
-const Libreria = ({ books, category }) => {
+const Libreria = ({ books, category, onSearchBooksChange }) => {
     if (books.errorMessage) {
         return renderError(books.errorMessage);
     }
+
     return (
         <div className="ted-libreria">
             <HeaderBar title="Librería" link="libreria" />
@@ -46,6 +48,11 @@ const Libreria = ({ books, category }) => {
                                     </Col>
                                 </Row>
                             )}
+                            <Row>
+                                <Col className="mt-3">
+                                    <SearchBooks resultArr={books.booksArr} onSearchChange={onSearchBooksChange} />
+                                </Col>
+                            </Row>
                             <Row>
                                 {books.booksArr.map((book) => {
                                     return (

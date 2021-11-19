@@ -20,6 +20,9 @@ import {
     FETCHING_RELATED_BOOKS,
     FETCHING_RELATED_BOOKS_SUCCESS,
     FETCHING_RELATED_BOOKS_ERROR,
+    SEARCHING_BOOKS,
+    SEARCHING_BOOKS_SUCCESS,
+    SEARCHING_BOOKS_ERROR,
 } from "../constants";
 
 const INITIAL_STATE = {
@@ -32,6 +35,8 @@ const INITIAL_STATE = {
     categoriesInUse: [],
     relatedBooks: [],
     isFetchingRelated: false,
+    isSearching: false,
+    search: [],
 };
 
 function booksReducer(state = INITIAL_STATE, action) {
@@ -75,6 +80,7 @@ function booksReducer(state = INITIAL_STATE, action) {
                 errorMessage: "",
             };
         case BOOK_EDIT_ERROR:
+        case SEARCHING_BOOKS_ERROR:
             return { ...state, errorMessage: action.payload };
         case BOOK_DELETE_SUCCESS:
             return {
@@ -118,6 +124,15 @@ function booksReducer(state = INITIAL_STATE, action) {
             return { ...state, isFetchingRelated: true };
         case FETCHING_RELATED_BOOKS_ERROR:
             return { ...state, isFetchingRelated: false, errorMessage: action.payload };
+        case SEARCHING_BOOKS:
+            return { ...state, isSearching: true };
+        case SEARCHING_BOOKS_SUCCESS:
+            return {
+                ...state,
+                isSearching: false,
+                search: action.payload,
+                errorMessage: "",
+            };
         default:
             return state;
     }

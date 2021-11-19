@@ -21,11 +21,18 @@ import {
     FETCHING_RELATED_BOOKS,
     FETCHING_RELATED_BOOKS_SUCCESS,
     FETCHING_RELATED_BOOKS_ERROR,
+    SEARCHING_BOOKS,
+    SEARCHING_BOOKS_SUCCESS,
+    SEARCHING_BOOKS_ERROR,
 } from "../constants";
 import axios from "axios";
 import { rawToForm } from "../../utils/utils";
 
 const API_URL = process.env.REACT_APP_API_URL;
+
+export const changeBooks = (booksArr) => {
+    return { type: FETCHING_BOOKS_SUCCESS, payload: booksArr };
+};
 
 export const handleFetchingBooks =
     (limit = undefined) =>
@@ -33,7 +40,7 @@ export const handleFetchingBooks =
         dispatch({ type: FETCHING_BOOKS });
         try {
             const response = await axios.get(`${API_URL}/books?limit=${limit}`);
-            dispatch({ type: FETCHING_BOOKS_SUCCESS, payload: response.data });
+            dispatch(changeBooks(response.data));
         } catch (e) {
             dispatch({ type: FETCHING_BOOKS_ERROR, payload: "Hubo un error al intentar actualizar los libros." });
         }
@@ -139,5 +146,18 @@ export const handleFetchingRelatedBooks = (bookId) => async (dispatch) => {
             type: FETCHING_RELATED_BOOKS_ERROR,
             payload: "Hubo un error al intentar buscar libros relacionados.",
         });
+    }
+};
+
+export const bookSearch = (query, callback) => async (dispatch) => {
+    dispatch({ type: SEARCHING_BOOKS });
+    try {
+        const response = await axios.get(API_URL + "/books/search?search=" + query);
+        dispatch({ type: SEARCHING_BOOKS_SUCCESS, payload: response.data });
+        if (callback) {
+            callback(response.data);
+        }
+    } catch (e) {
+        dispatch({ type: SEARCHING_BOOKS_ERROR, payload: "Hubo un error al intentar buscar libros." });
     }
 };

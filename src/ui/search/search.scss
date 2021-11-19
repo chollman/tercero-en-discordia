@@ -5,3 +5,29 @@
         align-items: center;
     }
 }
+
+.search-books-tooltip {
+    min-width: 30%;
+    background: #FFFFFF !important;
+
+    .book-result-wrapper {
+        .btn {
+            background: #FFFFFF;
+            color: #34495e;
+            width: 100%;
+            text-align: left;
+
+            &:hover {
+                background: #EEEEEE;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .book-search {
+        .search-box {
+            width: 50%;
+        }
+    }
+}
